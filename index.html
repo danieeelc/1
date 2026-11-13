@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Daniel Campos — Páginas web para negocios</title>
-<meta name="description" content="De una idea, a la realidad.">
+<meta name="description" content="Diseño y publico sitios web claros, rápidos y responsivos.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
 <script>
 (function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}
@@ -75,6 +75,16 @@ h2{font-weight:800;font-size:clamp(1.8rem,5vw,2.75rem);line-height:1.1;letter-sp
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .steps b{color:#8FA3FF}}
 :root[data-theme="dark"] .steps b{color:#8FA3FF}
 
+/* Beneficios */
+.benefits{background:var(--lemon);color:var(--lemon-ink)}
+.benefits .intro{color:#3B4350}
+.bgrid{list-style:none;margin:0 0 clamp(2.5rem,7vw,4rem);padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.bgrid li{background:rgba(16,24,40,.07);border-radius:14px;padding:1.4rem}
+.bgrid h3{margin:0 0 .4rem;font-size:1.25rem;font-weight:800;line-height:1.2}
+.bgrid p{margin:0;color:#2B3340}
+.close{font-weight:800;font-size:clamp(1.8rem,5.5vw,3.25rem);line-height:1.05;letter-spacing:-.025em;max-width:20ch;margin:0 0 .75rem}
+.closesub{margin:0;font-weight:600;font-size:1.15rem}
+
 /* Contacto */
 .contact{background:var(--hero);color:var(--hero-ink)}
 .contact p{max-width:32rem;color:rgba(255,255,255,.9);margin:0 0 1.75rem}
@@ -99,7 +109,7 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
     </nav>
     <div class="url" aria-hidden="true"><span class="pre">https://</span><span class="typed">tunegocio.com</span></div>
     <h1 data-i18n="h1">Una página web que trabaje por tu negocio.</h1>
-    <p class="lead" data-i18n="lead">Diseño y publico sitios claros, rápidos y responsivos. Tú me cuentas qué vendes; yo me encargo del resto.</p>
+    <p class="lead" data-i18n="lead">Diseño y publico sitios claros, rápidos y responsivos: se adaptan a celular, tablet o computadora. Tú me cuentas qué vendes; yo me encargo del resto.</p>
     <div class="btns">
       <a class="btn main" data-i18n="wa" href="https://wa.me/50370502502">Escríbeme por WhatsApp</a>
       <a class="btn ghost" data-i18n="see" href="#servicios">Ver servicios</a>
@@ -143,6 +153,23 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
       </ol>
     </div>
   </section>
+
+  <section class="benefits" id="beneficios">
+    <div class="wrap">
+      <h2 data-i18n="hBen">Lo que gana tu negocio con un sitio web</h2>
+      <p class="intro" data-i18n="bIntro">Más allá de verse bien, un sitio web trabaja para ti todos los días.</p>
+      <ul class="bgrid">
+        <li><h3 data-i18n="b1t">Te encuentran</h3><p data-i18n="b1d">Cuando alguien busca en Google lo que vendes, tu negocio puede aparecer. Sin sitio, dependes de que otros te compartan.</p></li>
+        <li><h3 data-i18n="b2t">Abierto las 24 horas</h3><p data-i18n="b2d">Precios, horarios, ubicación y cómo pedir, disponibles a cualquier hora, sin que tengas que responder lo mismo cada día.</p></li>
+        <li><h3 data-i18n="b3t">Más confianza</h3><p data-i18n="b3d">Un sitio bien hecho le dice al cliente que tu negocio va en serio, antes incluso de que te escriba.</p></li>
+        <li><h3 data-i18n="b4t">Es tuyo</h3><p data-i18n="b4d">Las redes sociales cambian sus reglas cuando quieren. Tu sitio lo controlas tú.</p></li>
+        <li><h3 data-i18n="b5t">Un solo enlace para todo</h3><p data-i18n="b5d">Lo pones en Instagram, WhatsApp, tarjetas y facturas, y todos ven la misma información, siempre al día.</p></li>
+        <li><h3 data-i18n="b6t">Contacto en un toque</h3><p data-i18n="b6d">Un botón de WhatsApp siempre a la mano: el cliente interesado te escribe en un toque.</p></li>
+      </ul>
+      <p class="close" data-i18n="bClose">Tus clientes ya buscan en internet. Que te encuentren a ti.</p>
+      <p class="closesub" data-i18n="bSub">Empezar cuesta desde $150, y yo me encargo del resto.</p>
+    </div>
+  </section>
 </main>
 
 <section class="contact" id="contacto">
@@ -162,10 +189,10 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
 var root=document.documentElement;
 var EN={
 title:"Daniel Campos — Web pages for businesses",
-desc:"I design and publish clear, fast, mobile-ready websites.",
+desc:"I design and publish clear, fast, responsive websites.",
 nav:"Contact me",
 h1:"A website that works for your business.",
-lead:"I design and publish clear, fast, responsive websites. You tell me what you sell; I take care of the rest.",
+lead:"I design and publish clear, fast, responsive websites: they adapt to phone, tablet or computer. You tell me what you sell; I take care of the rest.",
 wa:"Message me on WhatsApp", see:"See services",
 hSvc:"Services",
 sIntro:"Launch prices for my first clients. Domain and hosting are paid separately. If what you need isn’t listed, tell me and we’ll figure it out.",
@@ -179,6 +206,16 @@ p1t:"We talk", p1d:"You tell me what you do and what you want your site to achie
 p2t:"Proposal", p2d:"I send you the price and timeline in writing.",
 p3t:"I build", p3d:"You review a draft with me and we refine it.",
 p4t:"I publish", p4d:"Your site goes live, ready to share.",
+hBen:"What your business gains with a website",
+bIntro:"Beyond looking good, a website works for you every single day.",
+b1t:"They find you", b1d:"When someone searches Google for what you sell, your business can show up. Without a site, you depend on others sharing you.",
+b2t:"Open 24 hours", b2d:"Prices, hours, location and how to order, available at any time, so you don’t answer the same questions every day.",
+b3t:"More trust", b3d:"A well-made site tells customers your business is serious, before they even message you.",
+b4t:"It’s yours", b4d:"Social networks change their rules whenever they like. You control your website.",
+b5t:"One link for everything", b5d:"Put it on Instagram, WhatsApp, business cards and invoices, and everyone sees the same, always up-to-date information.",
+b6t:"Contact in one tap", b6d:"A WhatsApp button always within reach: interested customers message you in one tap.",
+bClose:"Your customers already search online. Let them find you.",
+bSub:"Getting started costs from $150, and I take care of the rest.",
 hCta:"Shall we talk about your site?",
 cIntro:"Tell me what you sell and I’ll reply with an idea and a price.",
 wa2:"WhatsApp", call:"Call 7050 2502"
