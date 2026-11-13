@@ -6,18 +6,24 @@
 <title>Daniel Campos — Páginas web para negocios</title>
 <meta name="description" content="Diseño y publico sitios web claros, rápidos y listos para el celular.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
+<script>
+(function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}
+if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+document.documentElement.setAttribute('data-theme',t)})();
+</script>
 <style>
 :root{
   --bg:#F6F7F9; --ink:#101828; --muted:#52606F; --line:#D5DAE1;
   --hero:#2447F5; --hero-ink:#FFFFFF; --lemon:#F2E85C; --lemon-ink:#101828;
+  color-scheme:light;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#0E1117; --ink:#E8EBF0; --muted:#9AA6B5; --line:#273040;}
+  :root:not([data-theme="light"]){--bg:#0E1117; --ink:#E8EBF0; --muted:#9AA6B5; --line:#273040; color-scheme:dark}
 }
-:root[data-theme="dark"]{--bg:#0E1117; --ink:#E8EBF0; --muted:#9AA6B5; --line:#273040;}
+:root[data-theme="dark"]{--bg:#0E1117; --ink:#E8EBF0; --muted:#9AA6B5; --line:#273040; color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--hero)}
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.0625rem;line-height:1.6}
@@ -29,7 +35,15 @@ a{color:inherit}
 .hero{background:var(--hero);color:var(--hero-ink);padding-bottom:clamp(3rem,9vw,6rem)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding-block:1.25rem;gap:1rem}
 .brand{font-weight:800;font-size:1.1rem;text-decoration:none}
-.nav a.link{font-weight:600;text-underline-offset:4px}
+.tools{display:flex;align-items:center;gap:.5rem}
+.nav a.link{font-weight:600;text-underline-offset:4px;margin-right:.75rem}
+.tbtn{font:inherit;font-weight:600;font-size:.85rem;min-width:2.5rem;height:2.5rem;padding:0 .75rem;border-radius:999px;border:2px solid rgba(255,255,255,.7);background:transparent;color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.tbtn:hover{background:rgba(255,255,255,.15)}
+.tbtn svg{display:block}
+.ico-sun{display:none}
+:root[data-theme="dark"] .ico-sun{display:block}
+:root[data-theme="dark"] .ico-moon{display:none}
+@media (max-width:30rem){.nav a.link{display:none}}
 .url{display:inline-flex;align-items:center;margin-top:clamp(2rem,7vw,4.5rem);background:#fff;color:#101828;border-radius:999px;padding:.65rem 1.25rem;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(.9rem,3.4vw,1.1rem)}
 .url .pre{color:#6B7684}
 .url .typed{display:inline-block;overflow:hidden;white-space:nowrap;width:13ch;border-right:2px solid #2447F5;animation:type 1.8s steps(13) .3s both,caret .8s step-end infinite}
@@ -74,14 +88,21 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
   <div class="wrap">
     <nav class="nav">
       <a class="brand" href="#">Daniel Campos</a>
-      <a class="link" href="#contacto">Escríbeme</a>
+      <div class="tools">
+        <a class="link" data-i18n="nav" href="#contacto">Escríbeme</a>
+        <button id="lang" class="tbtn" type="button">EN</button>
+        <button id="theme" class="tbtn" type="button" aria-label="Cambiar a modo oscuro">
+          <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
     </nav>
     <div class="url" aria-hidden="true"><span class="pre">https://</span><span class="typed">tunegocio.com</span></div>
-    <h1>Una página web que trabaje por tu negocio.</h1>
-    <p class="lead">Diseño y publico sitios claros, rápidos y listos para todos los dispositivos. Tú me cuentas qué vendes; yo me encargo del resto.</p>
+    <h1 data-i18n="h1">Una página web que trabaje por tu negocio.</h1>
+    <p class="lead" data-i18n="lead">Diseño y publico sitios claros, rápidos y listos para el celular. Tú me cuentas qué vendes; yo me encargo del resto.</p>
     <div class="btns">
-      <a class="btn main" href="https://wa.me/50370502502">Escríbeme por WhatsApp</a>
-      <a class="btn ghost" href="#servicios">Ver servicios</a>
+      <a class="btn main" data-i18n="wa" href="https://wa.me/50370502502">Escríbeme por WhatsApp</a>
+      <a class="btn ghost" data-i18n="see" href="#servicios">Ver servicios</a>
     </div>
   </div>
 </header>
@@ -89,36 +110,36 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
 <main>
   <section id="servicios">
     <div class="wrap">
-      <h2>Servicios</h2>
-      <p class="intro">Precios de lanzamiento para mis primeros clientes. El dominio y el hosting se pagan aparte. Si lo que necesitas no está aquí, cuéntamelo y lo vemos.</p>
+      <h2 data-i18n="hSvc">Servicios</h2>
+      <p class="intro" data-i18n="sIntro">Precios de lanzamiento para mis primeros clientes. El dominio y el hosting se pagan aparte. Si lo que necesitas no está aquí, cuéntamelo y lo vemos.</p>
       <div class="row">
-        <div><h3>Página de presentación</h3><p>Una sola página con quién eres, qué ofreces y cómo contactarte. Ideal para empezar.</p></div>
-        <div class="price">Desde $150</div>
+        <div><h3 data-i18n="s1t">Página de presentación</h3><p data-i18n="s1d">Una sola página con quién eres, qué ofreces y cómo contactarte. Ideal para empezar.</p></div>
+        <div class="price" data-i18n="s1p">Desde $150</div>
       </div>
       <div class="row">
-        <div><h3>Sitio de varias páginas</h3><p>Inicio, servicios, nosotros y contacto, hasta 5 páginas con la estructura que tu negocio necesita.</p></div>
-        <div class="price">Desde $280</div>
+        <div><h3 data-i18n="s2t">Sitio de varias páginas</h3><p data-i18n="s2d">Inicio, servicios, nosotros y contacto, hasta 5 páginas con la estructura que tu negocio necesita.</p></div>
+        <div class="price" data-i18n="s2p">Desde $280</div>
       </div>
       <div class="row">
-        <div><h3>Tienda en línea sencilla</h3><p>Catálogo de hasta 20 productos con pedidos por WhatsApp o pago en línea.</p></div>
-        <div class="price">Desde $380</div>
+        <div><h3 data-i18n="s3t">Tienda en línea sencilla</h3><p data-i18n="s3d">Catálogo de hasta 20 productos con pedidos por WhatsApp o pago en línea.</p></div>
+        <div class="price" data-i18n="s3p">Desde $380</div>
       </div>
       <div class="row">
-        <div><h3>Mantenimiento mensual</h3><p>Cambios de textos, fotos y precios, y que tu sitio siga funcionando sin sorpresas.</p></div>
-        <div class="price">$25 al mes</div>
+        <div><h3 data-i18n="s4t">Mantenimiento mensual</h3><p data-i18n="s4d">Cambios de textos, fotos y precios, y que tu sitio siga funcionando sin sorpresas.</p></div>
+        <div class="price" data-i18n="s4p">$25 al mes</div>
       </div>
     </div>
   </section>
 
   <section style="padding-top:0">
     <div class="wrap">
-      <h2>Cómo trabajo</h2>
-      <p class="intro">Uso herramientas de IA para avanzar más rápido, y reviso cada página a mano antes de entregarla.</p>
+      <h2 data-i18n="hHow">Cómo trabajo</h2>
+      <p class="intro" data-i18n="hIntro">Uso herramientas de IA para avanzar más rápido, y reviso cada página a mano antes de entregarla.</p>
       <ol class="steps">
-        <li><b>1</b><h3>Hablamos</h3><p>Me cuentas qué haces y qué quieres lograr con tu sitio.</p></li>
-        <li><b>2</b><h3>Propuesta</h3><p>Te envío el precio y el plazo por escrito.</p></li>
-        <li><b>3</b><h3>Construyo</h3><p>Revisas un borrador conmigo y lo ajustamos.</p></li>
-        <li><b>4</b><h3>Publico</h3><p>Tu sitio queda en línea y listo para compartir.</p></li>
+        <li><b>1</b><h3 data-i18n="p1t">Hablamos</h3><p data-i18n="p1d">Me cuentas qué haces y qué quieres lograr con tu sitio.</p></li>
+        <li><b>2</b><h3 data-i18n="p2t">Propuesta</h3><p data-i18n="p2d">Te envío el precio y el plazo por escrito.</p></li>
+        <li><b>3</b><h3 data-i18n="p3t">Construyo</h3><p data-i18n="p3d">Revisas un borrador conmigo y lo ajustamos.</p></li>
+        <li><b>4</b><h3 data-i18n="p4t">Publico</h3><p data-i18n="p4d">Tu sitio queda en línea y listo para compartir.</p></li>
       </ol>
     </div>
   </section>
@@ -126,14 +147,71 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
 
 <section class="contact" id="contacto">
   <div class="wrap">
-    <h2>¿Hablamos de tu sitio?</h2>
-    <p>Cuéntame qué vendes y te respondo con una idea y un precio.</p>
+    <h2 data-i18n="hCta">¿Hablamos de tu sitio?</h2>
+    <p data-i18n="cIntro">Cuéntame qué vendes y te respondo con una idea y un precio.</p>
     <div class="btns">
-      <a class="btn main" href="https://wa.me/50370502502">WhatsApp</a>
-      <a class="btn ghost" href="tel:+50370502502">Llamar al 7050 2502</a>
+      <a class="btn main" data-i18n="wa2" href="https://wa.me/50370502502">WhatsApp</a>
+      <a class="btn ghost" data-i18n="call" href="tel:+50370502502">Llamar al 7050 2502</a>
     </div>
   </div>
 </section>
 <footer><div class="wrap">© 2026 Daniel Campos</div></footer>
+
+<script>
+(function(){
+var root=document.documentElement;
+var EN={
+title:"Daniel Campos — Web pages for businesses",
+desc:"I design and publish clear, fast, mobile-ready websites.",
+nav:"Contact me",
+h1:"A website that works for your business.",
+lead:"I design and publish clear, fast, mobile-ready websites. You tell me what you sell; I take care of the rest.",
+wa:"Message me on WhatsApp", see:"See services",
+hSvc:"Services",
+sIntro:"Launch prices for my first clients. Domain and hosting are paid separately. If what you need isn’t listed, tell me and we’ll figure it out.",
+s1t:"Single-page site", s1d:"One page covering who you are, what you offer and how to reach you. Ideal to get started.", s1p:"From $150",
+s2t:"Multi-page website", s2d:"Home, services, about and contact: up to 5 pages, structured the way your business needs.", s2p:"From $280",
+s3t:"Simple online store", s3d:"Catalog of up to 20 products with orders via WhatsApp or online payment.", s3p:"From $380",
+s4t:"Monthly maintenance", s4d:"Text, photo and price updates, and keeping your site running without surprises.", s4p:"$25 per month",
+hHow:"How I work",
+hIntro:"I use AI tools to move faster, and I review every page by hand before delivering it.",
+p1t:"We talk", p1d:"You tell me what you do and what you want your site to achieve.",
+p2t:"Proposal", p2d:"I send you the price and timeline in writing.",
+p3t:"I build", p3d:"You review a draft with me and we refine it.",
+p4t:"I publish", p4d:"Your site goes live, ready to share.",
+hCta:"Shall we talk about your site?",
+cIntro:"Tell me what you sell and I’ll reply with an idea and a price.",
+wa2:"WhatsApp", call:"Call 7050 2502"
+};
+var es={}, nodes=document.querySelectorAll('[data-i18n]');
+var md=document.querySelector('meta[name="description"]');
+nodes.forEach(function(n){es[n.getAttribute('data-i18n')]=n.textContent});
+es.title=document.title; es.desc=md.getAttribute('content');
+var langBtn=document.getElementById('lang'), themeBtn=document.getElementById('theme'), lang='es';
+
+function labels(){
+  var dark=root.getAttribute('data-theme')==='dark';
+  themeBtn.setAttribute('aria-label', lang==='en' ? (dark?'Switch to light mode':'Switch to dark mode') : (dark?'Cambiar a modo claro':'Cambiar a modo oscuro'));
+}
+function setLang(l,save){
+  lang=l; var d=(l==='en')?EN:es;
+  nodes.forEach(function(n){n.textContent=d[n.getAttribute('data-i18n')]});
+  root.setAttribute('lang',l); document.title=d.title; md.setAttribute('content',d.desc);
+  langBtn.textContent=(l==='en')?'ES':'EN';
+  langBtn.setAttribute('aria-label',(l==='en')?'Cambiar a español':'Switch to English');
+  labels();
+  if(save){try{localStorage.setItem('lang',l)}catch(e){}}
+}
+langBtn.addEventListener('click',function(){setLang(lang==='en'?'es':'en',true)});
+themeBtn.addEventListener('click',function(){
+  var n=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  root.setAttribute('data-theme',n);
+  try{localStorage.setItem('theme',n)}catch(e){}
+  labels();
+});
+var saved=null; try{saved=localStorage.getItem('lang')}catch(e){}
+setLang(saved==='en'?'en':'es',false);
+})();
+</script>
 </body>
 </html>
