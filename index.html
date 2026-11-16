@@ -10,6 +10,8 @@
 <meta property="og:title" content="Daniel Campos | Diseño web">
 <meta property="og:description" content="Diseño y desarrollo de páginas web modernas, creativas y adaptables.">
 <meta property="og:url" content="https://danieeelc.pages.dev/">
+<meta property="og:image" content="https://danieeelc.pages.dev/x.png">
+<link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='8%208%20362%20362'%3E%3Cpath%20d='M99.5209%208%20189%208C288.964%208%20370%2089.0365%20370%20189%20370%20288.964%20288.964%20370%20189%20370L99.5209%20370C48.9753%20370%208%20329.025%208%20278.479L8%20265.623%20160.182%20265.623%20160.182%20291.164%20307.044%20189%20160.182%2086.8356%20160.182%20112.377%208%20112.377%208%2099.5209C8%2048.9753%2048.9753%208%2099.5209%208Z'%20fill='%232447F5'%20fill-rule='evenodd'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
 <script>
 (function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}
@@ -39,7 +41,8 @@ a{color:inherit}
 /* Hero */
 .hero{background:var(--hero);color:var(--hero-ink);padding-bottom:clamp(3rem,9vw,6rem)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding-block:1.25rem;gap:1rem}
-.brand{font-weight:800;font-size:1.1rem;text-decoration:none}
+.brand{display:inline-flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.1rem;text-decoration:none}
+.logo{width:1.75rem;height:1.75rem;flex:none;display:block}
 .tools{display:flex;align-items:center;gap:.5rem}
 .nav a.link{font-weight:600;text-underline-offset:4px;margin-right:.75rem}
 .tbtn{font:inherit;font-weight:600;font-size:.85rem;min-width:2.5rem;height:2.5rem;padding:0 .75rem;border-radius:999px;border:2px solid rgba(255,255,255,.7);background:transparent;color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
@@ -54,7 +57,7 @@ a{color:inherit}
 .url .typed{display:inline-block;overflow:hidden;white-space:nowrap;width:13ch;border-right:2px solid #2447F5;animation:type 1.8s steps(13) .3s both,caret .8s step-end infinite}
 @keyframes type{from{width:0}to{width:13ch}}
 @keyframes caret{50%{border-color:transparent}}
-h1{font-weight:800;font-size:clamp(2.4rem,8.5vw,5.25rem);line-height:1.02;letter-spacing:-.025em;margin:1.5rem 0 1.25rem;max-width:14ch}
+h1{font-weight:800;font-size:clamp(2.4rem,8.5vw,5.25rem);line-height:1.02;letter-spacing:-.025em;margin:1.5rem 0 1.25rem;max-width:16ch}
 .lead{font-size:clamp(1.1rem,2.6vw,1.35rem);max-width:36rem;margin:0 0 2rem;color:rgba(255,255,255,.9)}
 .btns{display:flex;flex-wrap:wrap;gap:.75rem}
 .btn{display:inline-block;font-weight:600;text-decoration:none;padding:.9rem 1.4rem;border-radius:10px;border:2px solid transparent}
@@ -90,6 +93,20 @@ h2{font-weight:800;font-size:clamp(1.8rem,5vw,2.75rem);line-height:1.1;letter-sp
 .close{font-weight:800;font-size:clamp(1.8rem,5.5vw,3.25rem);line-height:1.05;letter-spacing:-.025em;max-width:20ch;margin:0 0 .75rem}
 .closesub{margin:0;font-weight:600;font-size:1.15rem}
 
+/* Extras */
+.tag{margin:-.75rem 0 1.75rem;font-weight:600;letter-spacing:.02em;color:var(--lemon)}
+.row p.inc{margin-top:.6rem;font-size:.92rem;font-weight:600;color:var(--ink)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.25rem}
+.card{border:1px solid var(--line);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:.5rem}
+.card.next{border-style:dashed;justify-content:center}
+.card h3{margin:0;font-size:1.3rem;font-weight:600}
+.card p{margin:0;color:var(--muted)}
+.card .more{margin-top:.5rem;font-weight:600;text-underline-offset:4px}
+.shot{height:8rem;border-radius:10px;background:var(--hero);display:grid;place-items:center;margin-bottom:.5rem}
+.shot span{background:#fff;color:#101828;border-radius:999px;padding:.35rem .9rem;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem}
+.foot{display:flex;align-items:center;gap:.6rem}
+.foot .logo{width:1.25rem;height:1.25rem}
+
 /* Contacto */
 .contact{background:var(--hero);color:var(--hero-ink)}
 .contact p{max-width:32rem;color:rgba(255,255,255,.9);margin:0 0 1.75rem}
@@ -102,7 +119,7 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
 <header class="hero">
   <div class="wrap">
     <nav class="nav">
-      <a class="brand" href="#">Daniel Campos</a>
+      <a class="brand" href="#"><svg class="logo" viewBox="8 8 362 362" aria-hidden="true"><path d="M99.5209 8 189 8C288.964 8 370 89.0365 370 189 370 288.964 288.964 370 189 370L99.5209 370C48.9753 370 8 329.025 8 278.479L8 265.623 160.182 265.623 160.182 291.164 307.044 189 160.182 86.8356 160.182 112.377 8 112.377 8 99.5209C8 48.9753 48.9753 8 99.5209 8Z" fill="currentColor" fill-rule="evenodd"/></svg>Daniel Campos</a>
       <div class="tools">
         <a class="link" data-i18n="nav" href="#contacto">Escríbeme</a>
         <button id="lang" class="tbtn" type="button">EN</button>
@@ -113,8 +130,9 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
       </div>
     </nav>
     <div class="url" aria-hidden="true"><span class="pre">https://</span><span class="typed">tunegocio.com</span></div>
-    <h1 data-i18n="h1">Una página web que trabaje por tu negocio.</h1>
-    <p class="lead" data-i18n="lead">Diseño y publico sitios claros, rápidos y responsivos: se adaptan a celular, tablet o computadora. Tú me cuentas qué vendes; yo me encargo del resto.</p>
+    <h1 data-i18n="h1">Páginas web diseñadas para impulsar tu negocio.</h1>
+    <p class="lead" data-i18n="lead">Diseño y desarrollo páginas web modernas y responsivas que ayudan a tu negocio a establecer su presencia en línea, conectar con clientes y crecer con confianza.</p>
+    <p class="tag" data-i18n="tag">Diseño pensado. Ejecución estratégica. Resultados profesionales.</p>
     <div class="btns">
       <a class="btn main" data-i18n="wa" href="https://wa.me/50370502502">Escríbeme por WhatsApp</a>
       <a class="btn ghost" data-i18n="see" href="#servicios">Ver servicios</a>
@@ -126,30 +144,53 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
   <section id="servicios">
     <div class="wrap">
       <h2 data-i18n="hSvc">Servicios</h2>
-      <p class="intro" data-i18n="sIntro">Precios de lanzamiento para mis primeros clientes. El dominio y el hosting se pagan aparte. Si lo que necesitas no está aquí, cuéntamelo y lo vemos.</p>
+      <p class="intro" data-i18n="sIntro">Tarifas especiales de lanzamiento: una solución web profesional con una inversión inicial accesible. Los precios son desde el monto indicado, según el alcance del proyecto. El dominio y el hosting se pagan aparte.</p>
       <div class="row">
-        <div><h3 data-i18n="s1t">Página de presentación</h3><p data-i18n="s1d">Una sola página con quién eres, qué ofreces y cómo contactarte. Ideal para empezar.</p></div>
-        <div class="price" data-i18n="s1p">Desde $150</div>
+        <div><h3 data-i18n="s1t">Página de presentación</h3><p data-i18n="s1d">Una sola página con quién eres, qué ofreces y cómo contactarte. Ideal para empezar.</p><p class="inc" data-i18n="s1i">Incluye: diseño a tu medida · adaptación a celular, tablet y computadora · botón de WhatsApp y datos de contacto · ajustes sobre el borrador · publicación en línea.</p></div>
+        <div class="price" data-i18n="s1p">Desde $150 USD</div>
       </div>
       <div class="row">
-        <div><h3 data-i18n="s2t">Sitio de varias páginas</h3><p data-i18n="s2d">Inicio, servicios, nosotros y contacto, hasta 5 páginas con la estructura que tu negocio necesita.</p></div>
-        <div class="price" data-i18n="s2p">Desde $280</div>
+        <div><h3 data-i18n="s2t">Sitio de varias páginas</h3><p data-i18n="s2d">Inicio, servicios, nosotros y contacto, hasta 5 páginas con la estructura que tu negocio necesita.</p><p class="inc" data-i18n="s2i">Incluye todo lo anterior, más: hasta 5 páginas, formulario de contacto y una estructura pensada para tu negocio.</p></div>
+        <div class="price" data-i18n="s2p">Desde $280 USD</div>
       </div>
       <div class="row">
-        <div><h3 data-i18n="s3t">Tienda en línea sencilla</h3><p data-i18n="s3d">Catálogo de hasta 20 productos con pedidos por WhatsApp o pago en línea.</p></div>
-        <div class="price" data-i18n="s3p">Desde $380</div>
+        <div><h3 data-i18n="s3t">Tienda en línea sencilla</h3><p data-i18n="s3d">Catálogo de hasta 20 productos con pedidos por WhatsApp o pago en línea.</p><p class="inc" data-i18n="s3i">Incluye todo lo anterior, más: catálogo de hasta 20 productos y pedidos por WhatsApp o pago en línea.</p></div>
+        <div class="price" data-i18n="s3p">Desde $380 USD</div>
       </div>
       <div class="row">
-        <div><h3 data-i18n="s4t">Mantenimiento mensual</h3><p data-i18n="s4d">Cambios de textos, fotos y precios, y que tu sitio siga funcionando sin sorpresas.</p></div>
-        <div class="price" data-i18n="s4p">$25 al mes</div>
+        <div><h3 data-i18n="s4t">Mantenimiento mensual</h3><p data-i18n="s4d">Cambios de textos, fotos y precios, y que tu sitio siga funcionando sin sorpresas.</p><p class="inc" data-i18n="s4i">Incluye: cambios de textos, fotos y precios, y revisión de que todo siga funcionando.</p></div>
+        <div class="price" data-i18n="s4p">$25 USD al mes</div>
       </div>
+    </div>
+  </section>
+
+  <section id="proyectos" style="padding-top:0">
+    <div class="wrap">
+      <h2 data-i18n="hPrj">Proyectos</h2>
+      <p class="intro" data-i18n="prjIntro">Así se ve el trabajo: claro, rápido y a la medida.</p>
+      <div class="pgrid">
+        <article class="card"><div class="shot" aria-hidden="true"><span>danieeelc.pages.dev</span></div><h3 data-i18n="c1t">Mi propio sitio</h3><p data-i18n="c1d">Página bilingüe (español e inglés), con modo claro y oscuro, adaptable a cualquier pantalla.</p></article>
+        <article class="card next"><h3 data-i18n="c2t">Tu proyecto</h3><p data-i18n="c2d">Este espacio puede ser el próximo caso de éxito. Cuéntame qué necesitas y lo diseñamos juntos.</p><a class="more" data-i18n="c2l" href="https://wa.me/50370502502">Empezar por WhatsApp</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi" style="padding-top:0">
+    <div class="wrap">
+      <h2 data-i18n="hAbout">Sobre mí</h2>
+      <p class="intro" data-i18n="aIntro">Soy Daniel, diseñador y desarrollador web. Cada sitio se piensa y se construye a la medida de tu negocio, en lugar de instalar una plantilla genérica: conceptualizo, diseño, desarrollo y entrego una solución completa.</p>
+      <ul class="steps">
+        <li><h3 data-i18n="a1t">Calidad</h3><p data-i18n="a1d">Cuido cada detalle, del diseño al código, antes de entregarte el sitio.</p></li>
+        <li><h3 data-i18n="a2t">Confianza</h3><p data-i18n="a2d">Trabajo con clientes de cualquier país, con propuesta, precio y plazo por escrito.</p></li>
+        <li><h3 data-i18n="a3t">A tu medida</h3><p data-i18n="a3d">Tu sitio refleja tu marca y tus objetivos, no una plantilla genérica.</p></li>
+      </ul>
     </div>
   </section>
 
   <section style="padding-top:0">
     <div class="wrap">
       <h2 data-i18n="hHow">Cómo trabajo</h2>
-      <p class="intro" data-i18n="hIntro">Combino tecnología, pensamiento estratégico y supervisión profesional para desarrollar soluciones eficientes y de alta calidad. Aprovecho herramientas avanzadas para optimizar cada etapa del proceso, mientras aplico mi propio criterio y atención al detalle para asegurar que cada entrega cumpla con los estándares esperados.</p>
+      <p class="intro" data-i18n="hIntro">Combino tecnología, estrategia y supervisión profesional para entregar soluciones eficientes y de alta calidad, con criterio propio y atención al detalle en cada etapa.</p>
       <ol class="steps">
         <li><b>1</b><h3 data-i18n="p1t">Hablamos</h3><p data-i18n="p1d">Me cuentas qué haces y qué quieres lograr con tu sitio.</p></li>
         <li><b>2</b><h3 data-i18n="p2t">Propuesta</h3><p data-i18n="p2d">Te envío el precio y el plazo por escrito.</p></li>
@@ -172,7 +213,7 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
         <li><h3 data-i18n="b6t">Contacto en un toque</h3><p data-i18n="b6d">Un botón de WhatsApp siempre a la mano: el cliente interesado te escribe en un toque.</p></li>
       </ul>
       <p class="close" data-i18n="bClose">Tus clientes ya buscan en internet. Que te encuentren a ti.</p>
-      <p class="closesub" data-i18n="bSub">Empezar cuesta desde $150, y yo me encargo del resto.</p>
+      <p class="closesub" data-i18n="bSub">Empezar cuesta desde $150 USD, y yo me encargo del resto.</p>
     </div>
   </section>
 </main>
@@ -183,11 +224,11 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
     <p data-i18n="cIntro">Cuéntame qué vendes y te respondo con una idea y un precio.</p>
     <div class="btns">
       <a class="btn main" data-i18n="wa2" href="https://wa.me/50370502502">WhatsApp</a>
-      <a class="btn ghost" data-i18n="call" href="tel:+50370502502">Llamar al 7050 2502</a>
+      <a class="btn ghost" data-i18n="call" href="tel:+50370502502">Llamar al +503 7050 2502</a>
     </div>
   </div>
 </section>
-<footer><div class="wrap">© 2026 Daniel Campos</div></footer>
+<footer><div class="wrap foot"><svg class="logo" viewBox="8 8 362 362" aria-hidden="true"><path d="M99.5209 8 189 8C288.964 8 370 89.0365 370 189 370 288.964 288.964 370 189 370L99.5209 370C48.9753 370 8 329.025 8 278.479L8 265.623 160.182 265.623 160.182 291.164 307.044 189 160.182 86.8356 160.182 112.377 8 112.377 8 99.5209C8 48.9753 48.9753 8 99.5209 8Z" fill="currentColor" fill-rule="evenodd"/></svg><span>© 2026 Daniel Campos</span></div></footer>
 
 <script>
 (function(){
@@ -196,17 +237,17 @@ var EN={
 title:"Daniel Campos | Web design",
 desc:"Design and development of modern, creative, responsive websites.",
 nav:"Contact me",
-h1:"A website that works for your business.",
-lead:"I design and publish clear, fast, responsive websites: they adapt to phone, tablet or computer. You tell me what you sell; I take care of the rest.",
+h1:"Websites designed to move your business forward.",
+lead:"I design and develop modern, responsive websites that help businesses establish their online presence, connect with customers and grow with confidence.",
 wa:"Message me on WhatsApp", see:"See services",
 hSvc:"Services",
-sIntro:"Launch prices for my first clients. Domain and hosting are paid separately. If what you need isn’t listed, tell me and we’ll figure it out.",
-s1t:"Single-page site", s1d:"One page covering who you are, what you offer and how to reach you. Ideal to get started.", s1p:"From $150",
-s2t:"Multi-page website", s2d:"Home, services, about and contact: up to 5 pages, structured the way your business needs.", s2p:"From $280",
-s3t:"Simple online store", s3d:"Catalog of up to 20 products with orders via WhatsApp or online payment.", s3p:"From $380",
-s4t:"Monthly maintenance", s4d:"Text, photo and price updates, and keeping your site running without surprises.", s4p:"$25 per month",
+sIntro:"Special launch rates: a professional web solution with an accessible initial investment. Prices start from the amount shown, depending on project scope. Domain and hosting are paid separately.",
+s1t:"Single-page site", s1d:"One page covering who you are, what you offer and how to reach you. Ideal to get started.", s1p:"From $150 USD",
+s2t:"Multi-page website", s2d:"Home, services, about and contact: up to 5 pages, structured the way your business needs.", s2p:"From $280 USD",
+s3t:"Simple online store", s3d:"Catalog of up to 20 products with orders via WhatsApp or online payment.", s3p:"From $380 USD",
+s4t:"Monthly maintenance", s4d:"Text, photo and price updates, and keeping your site running without surprises.", s4p:"$25 USD per month",
 hHow:"How I work",
-hIntro:"I combine technology, strategic thinking and professional oversight to build efficient, high-quality solutions. I use advanced tools to streamline every stage of the process, while applying my own judgment and attention to detail to make sure every delivery meets the expected standards.",
+hIntro:"I combine technology, strategy and professional oversight to deliver efficient, high-quality solutions, with my own judgment and attention to detail at every stage.",
 p1t:"We talk", p1d:"You tell me what you do and what you want your site to achieve.",
 p2t:"Proposal", p2d:"I send you the price and timeline in writing.",
 p3t:"I build", p3d:"You review a draft with me and we refine it.",
@@ -220,10 +261,22 @@ b4t:"It’s yours", b4d:"Social networks change their rules whenever they like. 
 b5t:"One link for everything", b5d:"Put it on Instagram, WhatsApp, business cards and invoices, and everyone sees the same, always up-to-date information.",
 b6t:"Contact in one tap", b6d:"A WhatsApp button always within reach: interested customers message you in one tap.",
 bClose:"Your customers already search online. Let them find you.",
-bSub:"Getting started costs from $150, and I take care of the rest.",
+bSub:"Getting started costs from $150 USD, and I take care of the rest.",
+s1i:"Includes: custom design · adapts to phone, tablet and computer · WhatsApp button and contact details · revisions on the draft · publishing online.",
+s2i:"Includes everything above, plus: up to 5 pages, a contact form and a structure built for your business.",
+s3i:"Includes everything above, plus: a catalog of up to 20 products and orders via WhatsApp or online payment.",
+s4i:"Includes: text, photo and price updates, and checks that everything keeps working.",
+hPrj:"Projects", prjIntro:"This is what the work looks like: clear, fast and tailored.",
+c1t:"My own website", c1d:"Bilingual site (Spanish and English) with light and dark modes, adapting to any screen.",
+c2t:"Your project", c2d:"This spot could be the next success story. Tell me what you need and we’ll design it together.", c2l:"Start on WhatsApp",
+hAbout:"About me", aIntro:"I’m Daniel, a web designer and developer. Every site is conceived and built around your business instead of dropping in a generic template: I plan, design, develop and deliver a complete solution.",
+a1t:"Quality", a1d:"I care about every detail, from design to code, before handing over your site.",
+a2t:"Trust", a2d:"I work with clients in any country, with proposal, price and timeline in writing.",
+a3t:"Tailored to you", a3d:"Your site reflects your brand and goals, not a generic template.",
+tag:"Thoughtful design. Strategic execution. Professional results.",
 hCta:"Shall we talk about your site?",
 cIntro:"Tell me what you sell and I’ll reply with an idea and a price.",
-wa2:"WhatsApp", call:"Call 7050 2502"
+wa2:"WhatsApp", call:"Call +503 7050 2502"
 };
 var es={}, nodes=document.querySelectorAll('[data-i18n]');
 var md=document.querySelector('meta[name="description"]');
