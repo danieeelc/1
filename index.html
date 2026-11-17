@@ -98,10 +98,16 @@ h2{font-weight:800;font-size:clamp(1.8rem,5vw,2.75rem);line-height:1.1;letter-sp
 .row p.inc{margin-top:.6rem;font-size:.92rem;font-weight:600;color:var(--ink)}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.25rem}
 .card{border:1px solid var(--line);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:.5rem}
-.card.next{border-style:dashed;justify-content:center}
+.card.next{border-style:dashed;border-color:var(--hero);background:rgba(36,71,245,.07);justify-content:center}
 .card h3{margin:0;font-size:1.3rem;font-weight:600}
 .card p{margin:0;color:var(--muted)}
 .card .more{margin-top:.5rem;font-weight:600;text-underline-offset:4px}
+.cta{display:inline-flex;align-items:center;gap:.6rem;align-self:flex-start;margin-top:.75rem;background:var(--hero);color:#fff;font-weight:800;font-size:1.05rem;text-decoration:none;padding:1rem 1.6rem;border-radius:12px;box-shadow:0 6px 18px rgba(36,71,245,.35);transition:transform .15s ease,box-shadow .15s ease}
+.cta::after{content:"→";content:"→" / "";transition:transform .15s ease}
+.cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(36,71,245,.45)}
+.cta:hover::after{transform:translateX(4px)}
+.cta:active{transform:none}
+@media (prefers-reduced-motion:reduce){.cta,.cta::after{transition:none}.cta:hover,.cta:hover::after{transform:none}}
 .shot{height:8rem;border-radius:10px;background:var(--hero);display:grid;place-items:center;margin-bottom:.5rem}
 .shot span{background:#fff;color:#101828;border-radius:999px;padding:.35rem .9rem;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem}
 .foot{display:flex;align-items:center;gap:.6rem}
@@ -171,7 +177,7 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
       <div class="pgrid">
         <article class="card"><div class="shot" aria-hidden="true"><span>danieeelc.pages.dev</span></div><h3 data-i18n="c1t">Mi propio sitio</h3><p data-i18n="c1d">Página bilingüe (español e inglés), con modo claro y oscuro, adaptable a cualquier pantalla.</p></article>
         <article class="card"><div class="shot" aria-hidden="true" style="background:#0072B6"><span>vimedicsv.pages.dev</span></div><h3 data-i18n="v1t">ViMedic El Salvador</h3><p data-i18n="v1d">Catálogo de insumos médicos y hospitalarios con búsqueda por nombre y categorías, y cotización por WhatsApp.</p><a class="more" data-i18n="v1l" href="https://vimedicsv.pages.dev/" target="_blank" rel="noopener">Visitar sitio</a></article>
-        <article class="card next"><h3 data-i18n="c2t">Tu proyecto</h3><p data-i18n="c2d">Este espacio puede ser el próximo caso de éxito. Cuéntame qué necesitas y lo diseñamos juntos.</p><a class="more" data-i18n="c2l" href="empezar.html">Empezar mi proyecto</a></article>
+        <article class="card next"><h3 data-i18n="c2t">Tu proyecto</h3><p data-i18n="c2d">Este espacio puede ser el próximo caso de éxito. Cuéntame qué necesitas y lo diseñamos juntos.</p><a class="cta" data-i18n="c2l" href="empezar.html">Empezar mi proyecto</a></article>
       </div>
     </div>
   </section>
