@@ -51,6 +51,14 @@ textarea{min-height:9rem;resize:vertical}
 select option{color:#101828}
 input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--hero);outline-offset:1px;border-color:var(--hero)}
 :root[data-theme="dark"] input:focus-visible,:root[data-theme="dark"] select:focus-visible,:root[data-theme="dark"] textarea:focus-visible{outline-color:#8FA3FF;border-color:#8FA3FF}
+@font-face{font-family:"Twemoji Country Flags";unicode-range:U+1F1E6-1F1FF,U+1F3F4,U+E0062-E007F;src:url("https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1.10/dist/TwemojiCountryFlags.woff2") format("woff2");font-display:swap}
+.cb{position:relative}
+.cbi,.cbl{font-family:"Twemoji Country Flags","Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.cbl{position:absolute;left:0;right:0;top:100%;margin:.25rem 0 0;padding:.25rem;list-style:none;max-height:16rem;overflow:auto;background:var(--bg);border:1.5px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:20}
+.cbl[hidden]{display:none}
+.cbl li{padding:.55rem .7rem;border-radius:7px;cursor:pointer}
+.cbl li[aria-selected=true]{background:var(--hero);color:#fff}
+.cbl li.none{cursor:default;color:var(--muted)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .send{font:inherit;font-weight:600;cursor:pointer;justify-self:start;background:var(--hero);color:#fff;border:2px solid transparent;border-radius:10px;padding:.9rem 1.6rem}
 .send:disabled{opacity:.6;cursor:wait}
@@ -94,8 +102,13 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
         <div><label for="email" data-i18n="lEmail">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" maxlength="150" required></div>
       </div>
       <div class="two">
-        <div><label for="tel" data-i18n="lTel">WhatsApp o teléfono (opcional)</label><input id="tel" name="telefono" type="tel" autocomplete="tel" maxlength="50"></div>
-        <div><label for="pais" data-i18n="lCountry">País (opcional)</label><input id="pais" name="pais" type="text" autocomplete="country-name" maxlength="80"></div>
+        <div class="cb">
+          <label for="paisq" data-i18n="lCountry">País (opcional)</label>
+          <input id="paisq" class="cbi" type="text" role="combobox" aria-expanded="false" aria-controls="paisl" aria-autocomplete="list" autocomplete="off" spellcheck="false">
+          <input id="pais" name="pais" type="hidden">
+          <ul id="paisl" class="cbl" role="listbox" hidden></ul>
+        </div>
+        <div><label for="tel" data-i18n="lTel">WhatsApp o teléfono (opcional)</label><input id="tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" maxlength="30"></div>
       </div>
       <div><label for="negocio" data-i18n="lBiz">Nombre de tu negocio</label><input id="negocio" name="negocio" type="text" autocomplete="organization" maxlength="120"></div>
       <div>
@@ -130,6 +143,8 @@ back:"← Home",
 h1:"Let’s start your project.",
 lead:"Tell me about your business and what you need. I’ll reply with an idea, a price and a timeline in writing.",
 lName:"Name", lEmail:"Email", lTel:"WhatsApp or phone (optional)", lCountry:"Country (optional)", lBiz:"Business name",
+pPais:"Type or select your country",
+noRes:"No results",
 lSvc:"What do you need?",
 o1:"Single-page site", o2:"Multi-page website", o3:"Simple online store", o4:"Monthly maintenance", o5:"Not sure yet",
 lMsg:"Tell me about your project", hMsg:"What does your business do and what do you want your site to achieve?",
@@ -142,6 +157,8 @@ var md=document.querySelector('meta[name="description"]');
 nodes.forEach(function(n){es[n.getAttribute('data-i18n')]=n.textContent});
 es.title=document.title; es.desc=md.getAttribute('content');
 es.sending="Enviando…";
+es.pPais="Escribe o elige tu país";
+es.noRes="Sin resultados";
 es.ok="¡Gracias! Recibí tu solicitud y te responderé pronto.";
 es.err="No se pudo enviar. Inténtalo de nuevo o escríbeme por WhatsApp: +503 7050 2502.";
 var langBtn=document.getElementById('lang'), themeBtn=document.getElementById('theme'), lang='es';
@@ -155,6 +172,7 @@ function labels(){
 function setLang(l,save){
   lang=l;
   nodes.forEach(function(n){n.textContent=T(n.getAttribute('data-i18n'))});
+  buildCountries();
   root.setAttribute('lang',l); document.title=T('title'); md.setAttribute('content',T('desc'));
   langBtn.textContent=(l==='en')?'ES':'EN';
   langBtn.setAttribute('aria-label',(l==='en')?'Cambiar a español':'Switch to English');
@@ -169,13 +187,96 @@ themeBtn.addEventListener('click',function(){
   try{localStorage.setItem('theme',n)}catch(e){}
   labels();
 });
+var C="AR,54,## #### ####|BO,591,#### ####|BR,55,## #####-####|CL,56,# #### ####|CO,57,### ### ####|CR,506,#### ####|CU,53,# ### ####|DO,1,(###) ###-####|EC,593,## ### ####|SV,503,#### ####|GT,502,#### ####|HT,509,## ## ####|HN,504,#### ####|MX,52,## #### ####|NI,505,#### ####|PA,507,#### ####|PY,595,### ### ###|PE,51,### ### ###|PR,1,(###) ###-####|UY,598,## ### ###|VE,58,### ### ####|BZ,501,###-####|JM,1,(###) ###-####|US,1,(###) ###-####|CA,1,(###) ###-####|ES,34,### ## ## ##|PT,351,### ### ###|FR,33,# ## ## ## ##|DE,49,### #######|IT,39,### ### ####|GB,44,#### ######|IE,353,## ### ####|NL,31,# ## ## ## ##|BE,32,### ## ## ##|CH,41,## ### ## ##|AT,43,### #######|SE,46,## ### ## ##|NO,47,### ## ###|DK,45,## ## ## ##|PL,48,### ### ###|AU,61,### ### ###|NZ,64,## ### ####|JP,81,## #### ####|KR,82,## #### ####|CN,86,### #### ####|IN,91,##### #####|AE,971,## ### ####|IL,972,## ### ####|ZA,27,## ### ####|NG,234,### ### ####".split('|').map(function(x){var a=x.split(',');return{c:a[0],d:a[1],p:a[2]}});
+var qIn=document.getElementById('paisq'), hid=document.getElementById('pais'), lst=document.getElementById('paisl'), tel=document.getElementById('tel');
+var selE=null, act=-1, shown=[], nm={}, typed=false;
+function flag(c){return String.fromCodePoint(127397+c.charCodeAt(0),127397+c.charCodeAt(1))}
+function norm(t){return String(t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
+function lab(x){return flag(x.c)+' '+nm[x.c].l}
+function buildCountries(){
+  var dL,dE,dN;
+  try{dL=new Intl.DisplayNames([lang],{type:'region'});dE=new Intl.DisplayNames(['es'],{type:'region'});dN=new Intl.DisplayNames(['en'],{type:'region'})}catch(e){return}
+  nm={};
+  C.forEach(function(x){nm[x.c]={l:dL.of(x.c),e:dE.of(x.c),k:[dL.of(x.c),dE.of(x.c),dN.of(x.c)].map(norm).join('|')+'|'+x.c.toLowerCase()}});
+  qIn.placeholder=T('pPais');
+  if(selE)qIn.value=lab(selE);
+  if(!lst.hidden)render();
+}
+function render(){
+  var q=typed?norm(qIn.value.replace(/[\u{1F1E6}-\u{1F1FF}]/gu,'')):'';
+  shown=C.filter(function(x){return !q||nm[x.c].k.indexOf(q)>-1});
+  shown.sort(function(a,b){
+    var sa=q&&norm(nm[a.c].l).indexOf(q)===0?0:1, sb=q&&norm(nm[b.c].l).indexOf(q)===0?0:1;
+    return sa-sb||nm[a.c].l.localeCompare(nm[b.c].l,lang);
+  });
+  act=q&&shown.length?0:-1;
+  lst.innerHTML='';
+  if(!shown.length){var n=document.createElement('li');n.className='none';n.textContent=T('noRes');lst.appendChild(n)}
+  shown.forEach(function(x,i){var li=document.createElement('li');li.id='paisl-'+x.c;li.setAttribute('role','option');li.setAttribute('data-i',i);li.textContent=lab(x);lst.appendChild(li)});
+  mark();
+}
+function mark(){
+  Array.prototype.forEach.call(lst.querySelectorAll('[role=option]'),function(li,i){li.setAttribute('aria-selected',i===act?'true':'false')});
+  var a=lst.querySelector('[aria-selected=true]');
+  if(a){qIn.setAttribute('aria-activedescendant',a.id);a.scrollIntoView({block:'nearest'})}else qIn.removeAttribute('aria-activedescendant');
+}
+function openL(){lst.hidden=false;qIn.setAttribute('aria-expanded','true');render()}
+function closeL(){lst.hidden=true;qIn.setAttribute('aria-expanded','false');qIn.removeAttribute('aria-activedescendant')}
+function clearCountry(){selE=null;hid.value='';qIn.value='';tel.placeholder='';typed=false}
+function settle(){
+  if(typed&&shown.length===1){pick(shown[0]);return}
+  if(!qIn.value.trim()){clearCountry();return}
+  qIn.value=selE?lab(selE):'';
+}
+function pick(x){selE=x;hid.value=nm[x.c].e;qIn.value=lab(x);typed=false;closeL();onCountry()}
+function fmt(e,nat){
+  var max=(e.p.match(/#/g)||[]).length,out='',i=0;nat=nat.slice(0,max);
+  for(var k=0;k<e.p.length&&i<nat.length;k++){out+=e.p.charAt(k)==='#'?nat.charAt(i++):e.p.charAt(k)}
+  return '+'+e.d+' '+out;
+}
+function onCountry(){
+  var e=selE; if(!e){tel.placeholder='';return}
+  var raw=tel.value,d=raw.replace(/\D/g,''),nat=d;
+  if(/^\s*\+/.test(raw)){
+    var m=[3,2,1].map(function(n){return d.slice(0,n)}).filter(function(c){return C.some(function(x){return x.d===c})})[0];
+    nat=m?d.slice(m.length):d;
+  }
+  tel.value=fmt(e,nat);
+  tel.placeholder=fmt(e,'71234567890123');
+}
+qIn.addEventListener('focus',function(){typed=false;openL();qIn.select()});
+qIn.addEventListener('click',function(){if(lst.hidden){typed=false;openL()}});
+qIn.addEventListener('input',function(){typed=true;if(lst.hidden){lst.hidden=false;qIn.setAttribute('aria-expanded','true')}render()});
+qIn.addEventListener('keydown',function(e){
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    if(lst.hidden){typed=false;openL();return}
+    var n=shown.length; if(!n)return;
+    act=e.key==='ArrowDown'?(act+1)%n:(act<=0?n-1:act-1); mark();
+  }else if(e.key==='Enter'){
+    if(!lst.hidden){e.preventDefault();if(act>-1&&shown[act])pick(shown[act])}
+  }else if(e.key==='Escape'){
+    if(!lst.hidden){e.preventDefault();closeL();typed=false;settle()}
+  }
+});
+qIn.addEventListener('blur',function(){closeL();settle()});
+lst.addEventListener('mousedown',function(e){
+  e.preventDefault();
+  var li=e.target.closest('[role=option]'); if(li)pick(shown[+li.getAttribute('data-i')]);
+});
+tel.addEventListener('input',function(){
+  var e=selE; if(!e)return;
+  var d=tel.value.replace(/\D/g,'');
+  if(!d){tel.value='';return}
+  tel.value=fmt(e,d.indexOf(e.d)===0?d.slice(e.d.length):d);
+});
 form.addEventListener('submit',function(e){
   e.preventDefault();
   btn.disabled=true; btn.textContent=T('sending'); showStatus(null);
   var o={}; new FormData(form).forEach(function(v,k){o[k]=v}); o.idioma=lang;
   fetch('/api/contacto',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})
   .then(function(r){return r.json().catch(function(){return {}}).then(function(d){return r.ok&&d.ok})})
-  .then(function(ok){if(ok){form.reset();showStatus('ok','ok')}else{showStatus('err','err')}})
+  .then(function(ok){if(ok){form.reset();clearCountry();showStatus('ok','ok')}else{showStatus('err','err')}})
   .catch(function(){showStatus('err','err')})
   .then(function(){btn.disabled=false;btn.textContent=T('send')});
 });
