@@ -59,6 +59,9 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px soli
 #status.ok{color:#0B7A43}#status.err{color:#B42318}
 :root[data-theme="dark"] #status.ok{color:#5FD38D}:root[data-theme="dark"] #status.err{color:#FF8A80}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #status.ok{color:#5FD38D}:root:not([data-theme="light"]) #status.err{color:#FF8A80}}
+.gform{max-width:40rem}
+.gform iframe{display:block;width:100%;height:1598px;border:0;border-radius:12px;background:#fff}
+.gform .note{margin-top:1rem}
 footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 2rem;font-size:.95rem}
 .foot{display:flex;align-items:center;gap:.6rem}.foot .logo{width:1.25rem;height:1.25rem}
 </style>
@@ -84,40 +87,10 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
 
 <main>
   <div class="wrap">
-    <form id="f" action="https://formsubmit.co/rs.danielcampos@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="Nueva solicitud de proyecto — danieeelc.pages.dev">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://danieeelc.pages.dev/empezar?enviado">
-      <input type="hidden" name="idioma" id="idioma" value="es">
-      <div class="hp" aria-hidden="true"><label>No llenar<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
-      <div class="two">
-        <div><label for="nombre" data-i18n="lName">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required></div>
-        <div><label for="email" data-i18n="lEmail">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-      </div>
-      <div class="two">
-        <div><label for="tel" data-i18n="lTel">WhatsApp o teléfono (opcional)</label><input id="tel" name="telefono" type="tel" autocomplete="tel"></div>
-        <div><label for="pais" data-i18n="lCountry">País (opcional)</label><input id="pais" name="pais" type="text" autocomplete="country-name"></div>
-      </div>
-      <div><label for="negocio" data-i18n="lBiz">Nombre de tu negocio</label><input id="negocio" name="negocio" type="text" autocomplete="organization"></div>
-      <div>
-        <label for="servicio" data-i18n="lSvc">¿Qué necesitas?</label>
-        <select id="servicio" name="servicio">
-          <option value="Página de presentación" data-i18n="o1">Página de presentación</option>
-          <option value="Sitio de varias páginas" data-i18n="o2">Sitio de varias páginas</option>
-          <option value="Tienda en línea sencilla" data-i18n="o3">Tienda en línea sencilla</option>
-          <option value="Mantenimiento mensual" data-i18n="o4">Mantenimiento mensual</option>
-          <option value="Aún no lo sé" data-i18n="o5">Aún no lo sé</option>
-        </select>
-      </div>
-      <div>
-        <label for="mensaje"><span data-i18n="lMsg">Cuéntame sobre tu proyecto</span><span class="hint" data-i18n="hMsg">¿A qué se dedica tu negocio y qué quieres lograr con el sitio?</span></label>
-        <textarea id="mensaje" name="mensaje" required></textarea>
-      </div>
-      <button class="send" id="send" type="submit" data-i18n="send">Enviar solicitud</button>
-      <p id="status" role="status" aria-live="polite"></p>
-      <p class="note" data-i18n="note">Te responderé por correo o por WhatsApp.</p>
-    </form>
+    <div class="gform">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfy1I1c_Ob2kkJpe2XAoDje5b7iVpWr4EoGcyIK9Yodn6YTlg/viewform?embedded=true" title="Formulario / Form" loading="lazy">Cargando…</iframe>
+      <p class="note"><a data-i18n="open" href="https://docs.google.com/forms/d/e/1FAIpQLSfy1I1c_Ob2kkJpe2XAoDje5b7iVpWr4EoGcyIK9Yodn6YTlg/viewform" target="_blank" rel="noopener">Abrir el formulario en una pestaña nueva</a></p>
+    </div>
   </div>
 </main>
 <footer><div class="wrap foot"><svg class="logo" viewBox="8 8 362 362" aria-hidden="true"><path d="M99.5209 8 189 8C288.964 8 370 89.0365 370 189 370 288.964 288.964 370 189 370L99.5209 370C48.9753 370 8 329.025 8 278.479L8 265.623 160.182 265.623 160.182 291.164 307.044 189 160.182 86.8356 160.182 112.377 8 112.377 8 99.5209C8 48.9753 48.9753 8 99.5209 8Z" fill="currentColor" fill-rule="evenodd"/></svg><span>© 2026 Daniel Campos</span></div></footer>
@@ -131,25 +104,14 @@ desc:"Tell me about your business and your web project. I’ll reply with an ide
 back:"← Home",
 h1:"Let’s start your project.",
 lead:"Tell me about your business and what you need. I’ll reply with an idea, a price and a timeline in writing.",
-lName:"Name", lEmail:"Email", lTel:"WhatsApp or phone (optional)", lCountry:"Country (optional)", lBiz:"Business name",
-lSvc:"What do you need?",
-o1:"Single-page site", o2:"Multi-page website", o3:"Simple online store", o4:"Monthly maintenance", o5:"Not sure yet",
-lMsg:"Tell me about your project", hMsg:"What does your business do and what do you want your site to achieve?",
-send:"Send request", sending:"Sending…", note:"I’ll reply by email or WhatsApp.",
-ok:"Thank you! I received your request and will reply soon.",
-err:"The request couldn’t be sent. Please try again or message me on WhatsApp: +503 7050 2502."
+open:"Open the form in a new tab"
 };
 var es={}, nodes=document.querySelectorAll('[data-i18n]');
 var md=document.querySelector('meta[name="description"]');
 nodes.forEach(function(n){es[n.getAttribute('data-i18n')]=n.textContent});
 es.title=document.title; es.desc=md.getAttribute('content');
-es.sending="Enviando…";
-es.ok="¡Gracias! Recibí tu solicitud y te responderé pronto.";
-es.err="No se pudo enviar. Inténtalo de nuevo o escríbeme por WhatsApp: +503 7050 2502.";
 var langBtn=document.getElementById('lang'), themeBtn=document.getElementById('theme'), lang='es';
-var st=document.getElementById('status'), btn=document.getElementById('send'), form=document.getElementById('f'), stKey=null;
 function T(k){return (lang==='en'?EN:es)[k]}
-function showStatus(k,cls){stKey=k;st.className=cls||'';st.textContent=k?T(k):''}
 function labels(){
   var dark=root.getAttribute('data-theme')==='dark';
   themeBtn.setAttribute('aria-label', lang==='en' ? (dark?'Switch to light mode':'Switch to dark mode') : (dark?'Cambiar a modo claro':'Cambiar a modo oscuro'));
@@ -158,10 +120,8 @@ function setLang(l,save){
   lang=l;
   nodes.forEach(function(n){n.textContent=T(n.getAttribute('data-i18n'))});
   root.setAttribute('lang',l); document.title=T('title'); md.setAttribute('content',T('desc'));
-  document.getElementById('idioma').value=l;
   langBtn.textContent=(l==='en')?'ES':'EN';
   langBtn.setAttribute('aria-label',(l==='en')?'Cambiar a español':'Switch to English');
-  if(stKey)st.textContent=T(stKey);
   labels();
   if(save){try{localStorage.setItem('lang',l)}catch(e){}}
 }
@@ -172,21 +132,8 @@ themeBtn.addEventListener('click',function(){
   try{localStorage.setItem('theme',n)}catch(e){}
   labels();
 });
-form.addEventListener('submit',function(e){
-  e.preventDefault();
-  btn.disabled=true; btn.textContent=T('sending'); showStatus(null);
-  fetch('https://formsubmit.co/ajax/rs.danielcampos@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)})
-  .then(function(r){return r.json()})
-  .then(function(d){
-    if(d&&(d.success===true||d.success==='true')){form.reset();document.getElementById('idioma').value=lang;showStatus('ok','ok')}
-    else{showStatus('err','err')}
-  })
-  .catch(function(){showStatus('err','err')})
-  .then(function(){btn.disabled=false;btn.textContent=T('send')});
-});
 var saved=null; try{saved=localStorage.getItem('lang')}catch(e){}
 setLang(saved==='en'?'en':'es',false);
-if(/[?&]enviado/.test(location.search)){showStatus('ok','ok')}
 })();
 </script>
 </body>
