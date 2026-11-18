@@ -9,161 +9,925 @@
 <title>Daniel Campos | Diseño Web Profesional</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.5/build/css/intlTelInput.css">
+
+<script>
+  try {
+    if (localStorage.getItem('jose-Campos-theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  } catch(e) {}
+</script>
 
 <style>
 :root {
  --bg:#080d18;
  --surface:#101827;
+ --surface2:#141f30;
  --text:#f4f7fc;
- --muted:#9ba9bd;
+ --muted:#b4c0d0;
  --accent:#65e5bd;
- --border:rgba(255,255,255,.09);
+ --accent-text:#07140f;
+ --border:rgba(255,255,255,.12);
+ --input-bg:#0b1421;
+ --input-text:#ffffff;
+ --header-bg:rgba(8,13,24,.95);
+ --section-bg:#0c1320;
+ --contact-bg:linear-gradient(135deg,#122c2b,#101827 75%);
+ --focus: #65e5bd;
+ color-scheme:dark;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-a{text-decoration:none;color:inherit}
-button,input,select,textarea{font:inherit}
-.container{width:min(1120px,90%);margin:auto}
-.accent{color:var(--accent)}
-.section{padding:90px 0}
-.section-label{color:var(--accent);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:12px}
-.section-title{font-family:Manrope,sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.2;margin-bottom:18px}
-.section-description{color:var(--muted);max-width:650px}
-.section-heading{margin-bottom:42px}
-.btn{display:inline-flex;justify-content:center;align-items:center;padding:13px 23px;border-radius:9px;font-weight:700;transition:.25s;cursor:pointer;border:1px solid transparent}
-.btn-primary{background:var(--accent);color:#07140f}
-.btn-primary:hover{background:#91f2d2;transform:translateY(-3px)}
-.btn-outline{border-color:var(--border);color:white}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-header{position:sticky;top:0;z-index:100;background:rgba(8,13,24,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
-nav{height:76px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-family:Manrope,sans-serif;font-size:1.25rem;font-weight:800}
-.logo span{color:var(--accent)}
-.nav-links{display:flex;gap:27px;align-items:center;list-style:none}
-.nav-links a{color:var(--muted);font-size:.9rem}
-.nav-links a:hover{color:var(--accent)}
-.menu-toggle{display:none;background:none;border:0;color:white;font-size:1.7rem;cursor:pointer}
-.hero{min-height:620px;display:flex;align-items:center;padding:100px 0;position:relative;overflow:hidden}
-.hero:before{content:"";position:absolute;width:500px;height:500px;background:rgba(101,229,189,.1);filter:blur(110px);border-radius:50%;right:-100px;top:30px}
-.hero-content{max-width:800px;position:relative}
-.availability{display:inline-block;color:var(--accent);border:1px solid rgba(101,229,189,.3);padding:7px 14px;border-radius:30px;font-size:.8rem;margin-bottom:28px}
-.hero h1{font-family:Manrope,sans-serif;font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.08;letter-spacing:-3px;margin-bottom:25px}
-.hero p{max-width:620px;color:var(--muted);font-size:1.1rem;margin-bottom:30px}
-.hero-buttons{display:flex;gap:13px;flex-wrap:wrap}
-.hero-note{margin-top:40px;color:var(--muted);font-size:.85rem}
-.services,.about,.benefits{background:#0c1320}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;transition:.3s}
-.card:hover{border-color:rgba(101,229,189,.5);transform:translateY(-4px)}
-.card-icon{font-size:1.8rem;margin-bottom:15px}
-.card h3{font-family:Manrope,sans-serif;font-size:1.2rem;margin-bottom:10px}
-.card p{color:var(--muted);font-size:.9rem}
-.card ul{list-style:none;margin:20px 0}
-.card li{color:#c5d0df;font-size:.87rem;margin:8px 0}
-.card li:before{content:"✓";color:var(--accent);margin-right:10px}
-.price{font-family:Manrope,sans-serif;font-size:1.8rem;font-weight:800;margin-top:18px}
-.price small{font-size:.75rem;color:var(--muted);font-weight:400}
-.note{color:var(--muted);font-size:.8rem;margin-top:20px}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-.project-preview{height:220px;display:grid;place-items:center;background:radial-gradient(circle at center,#263e50,transparent 70%),#121d2c;padding:20px}
-.preview-window{width:90%;height:155px;background:#f3f6fa;color:#152438;border-radius:9px;padding:18px}
-.preview-window strong{display:block;font-size:1.2rem}
-.preview-window p{font-size:.7rem;color:#64748b}
-.preview-line{width:55%;height:6px;background:#65e5bd;margin-top:15px;border-radius:5px}
-.project-content{padding:22px}
-.project-content p{color:var(--muted);font-size:.9rem;margin:8px 0}
-.project-content a{color:var(--accent);font-weight:700}
-.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
-.about-text{color:var(--muted);margin-bottom:18px}
-.values{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.value{background:var(--surface);padding:20px;border:1px solid var(--border);border-radius:13px}
-.value h3{color:var(--accent);font-size:1rem}
-.value p{color:var(--muted);font-size:.82rem;margin-top:6px}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.step{border-top:1px solid var(--border);padding-top:18px}
-.step-number{font-size:2.4rem;color:var(--accent);font-weight:800}
-.step p{font-size:.87rem;color:var(--muted)}
-.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.benefit{padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
-.benefit h3{margin-bottom:8px}
-.benefit p{color:var(--muted);font-size:.88rem}
-.benefit-icon{font-size:1.7rem;margin-bottom:12px}
-.faq-list{max-width:800px}
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-question{width:100%;display:flex;justify-content:space-between;background:none;border:0;color:white;text-align:left;padding:22px 0;cursor:pointer;font-weight:700}
-.faq-question span{color:var(--accent);font-size:1.3rem}
-.faq-answer{display:none;color:var(--muted);font-size:.9rem;padding:0 30px 20px 0}
-.faq-item.active .faq-answer{display:block}
+
+:root.light-mode {
+ --bg:#f4f7fb;
+ --surface:#ffffff;
+ --surface2:#edf2f7;
+ --text:#172235;
+ --muted:#4b5d73;
+ --accent:#087c5b;
+ --accent-text:#ffffff;
+ --border:#cbd5e1;
+ --input-bg:#ffffff;
+ --input-text:#172235;
+ --header-bg:rgba(255,255,255,.97);
+ --section-bg:#e8eef5;
+ --contact-bg:linear-gradient(135deg,#d9f5e9,#edf3fa);
+ --focus:#087c5b;
+ color-scheme:light;
+}
+
+* {
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+html {
+ scroll-behavior:smooth;
+ scroll-padding-top:90px;
+}
+
+body {
+ font-family:'DM Sans',sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.7;
+ transition:background .25s,color .25s;
+}
+
+a {
+ text-decoration:none;
+ color:inherit;
+}
+
+button,input,select,textarea {
+ font:inherit;
+}
+
+button,a,input,select,textarea {
+ -webkit-tap-highlight-color:transparent;
+}
+
+:focus-visible {
+ outline:3px solid var(--focus);
+ outline-offset:4px;
+}
+
+.container {
+ width:min(1120px,90%);
+ margin:auto;
+}
+
+.accent {
+ color:var(--accent);
+}
+
+.section {
+ padding:90px 0;
+}
+
+.section-label {
+ color:var(--accent);
+ font-size:.78rem;
+ letter-spacing:2px;
+ text-transform:uppercase;
+ font-weight:800;
+ margin-bottom:12px;
+}
+
+.section-title {
+ font-family:Manrope,sans-serif;
+ font-size:clamp(2rem,4vw,3rem);
+ line-height:1.2;
+ margin-bottom:18px;
+}
+
+.section-description {
+ color:var(--muted);
+ max-width:650px;
+}
+
+.section-heading {
+ margin-bottom:42px;
+}
+
+.btn {
+ display:inline-flex;
+ justify-content:center;
+ align-items:center;
+ padding:13px 23px;
+ border-radius:9px;
+ font-weight:700;
+ transition:.25s;
+ cursor:pointer;
+ border:1px solid transparent;
+}
+
+.btn-primary {
+ background:var(--accent);
+ color:var(--accent-text);
+}
+
+.btn-primary:hover {
+ filter:brightness(1.08);
+ transform:translateY(-3px);
+}
+
+.btn-outline {
+ border-color:var(--border);
+ color:var(--text);
+}
+
+.btn-outline:hover {
+ border-color:var(--accent);
+ color:var(--accent);
+}
+
+/* NAVEGACIÓN */
+
+header {
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:var(--header-bg);
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--border);
+}
+
+nav {
+ min-height:76px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px;
+}
+
+.logo {
+ font-family:Manrope,sans-serif;
+ font-size:1.25rem;
+ font-weight:800;
+ white-space:nowrap;
+}
+
+.logo span {
+ color:var(--accent);
+}
+
+.nav-links {
+ display:flex;
+ gap:27px;
+ align-items:center;
+ list-style:none;
+}
+
+.nav-links a {
+ color:var(--muted);
+ font-size:.9rem;
+}
+
+.nav-links a:hover {
+ color:var(--accent);
+}
+
+.menu-toggle {
+ display:none;
+ background:none;
+ border:0;
+ color:var(--text);
+ font-size:1.7rem;
+ cursor:pointer;
+}
+
+.theme-toggle {
+ width:43px;
+ height:43px;
+ flex-shrink:0;
+ border-radius:50%;
+ border:1px solid var(--border);
+ background:var(--surface);
+ color:var(--text);
+ font-size:1.25rem;
+ cursor:pointer;
+ display:grid;
+ place-items:center;
+ transition:.25s;
+}
+
+.theme-toggle:hover {
+ border-color:var(--accent);
+ transform:rotate(15deg);
+}
+
+/* HERO */
+
+.hero {
+ min-height:620px;
+ display:flex;
+ align-items:center;
+ padding:100px 0;
+ position:relative;
+ overflow:hidden;
+}
+
+.hero:before {
+ content:"";
+ position:absolute;
+ width:500px;
+ height:500px;
+ background:rgba(101,229,189,.1);
+ filter:blur(110px);
+ border-radius:50%;
+ right:-100px;
+ top:30px;
+}
+
+.hero-content {
+ max-width:800px;
+ position:relative;
+}
+
+.availability {
+ display:inline-block;
+ color:var(--accent);
+ border:1px solid var(--border);
+ padding:7px 14px;
+ border-radius:30px;
+ font-size:.8rem;
+ margin-bottom:28px;
+}
+
+.hero h1 {
+ font-family:Manrope,sans-serif;
+ font-size:clamp(2.8rem,7vw,5.5rem);
+ line-height:1.08;
+ letter-spacing:-3px;
+ margin-bottom:25px;
+}
+
+.hero p {
+ max-width:620px;
+ color:var(--muted);
+ font-size:1.1rem;
+ margin-bottom:30px;
+}
+
+.hero-buttons {
+ display:flex;
+ gap:13px;
+ flex-wrap:wrap;
+}
+
+.hero-note {
+ margin-top:40px;
+ color:var(--muted);
+ font-size:.85rem;
+}
+
+/* SERVICIOS */
+
+.services,.about,.benefits {
+ background:var(--section-bg);
+}
+
+.grid-2 {
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:20px;
+}
+
+.card {
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:28px;
+ transition:.3s;
+}
+
+.card:hover {
+ border-color:var(--accent);
+ transform:translateY(-4px);
+}
+
+.card-icon {
+ font-size:1.8rem;
+ margin-bottom:15px;
+}
+
+.card h3 {
+ font-family:Manrope,sans-serif;
+ font-size:1.2rem;
+ margin-bottom:10px;
+}
+
+.card p {
+ color:var(--muted);
+ font-size:.9rem;
+}
+
+.card ul {
+ list-style:none;
+ margin:20px 0;
+}
+
+.card li {
+ color:var(--text);
+ font-size:.87rem;
+ margin:8px 0;
+}
+
+.card li:before {
+ content:"✓";
+ color:var(--accent);
+ margin-right:10px;
+}
+
+.price {
+ font-family:Manrope,sans-serif;
+ font-size:1.8rem;
+ font-weight:800;
+ margin-top:18px;
+}
+
+.price small {
+ font-size:.75rem;
+ color:var(--muted);
+ font-weight:400;
+}
+
+.note {
+ color:var(--muted);
+ font-size:.8rem;
+ margin-top:20px;
+}
+
+/* PROYECTOS */
+
+.projects {
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:22px;
+}
+
+.project-preview {
+ height:220px;
+ display:grid;
+ place-items:center;
+ background:radial-gradient(circle at center,#263e50,transparent 70%),#121d2c;
+ padding:20px;
+}
+
+.preview-window {
+ width:90%;
+ height:155px;
+ background:#f3f6fa;
+ color:#152438;
+ border-radius:9px;
+ padding:18px;
+}
+
+.preview-window strong {
+ display:block;
+ font-size:1.2rem;
+}
+
+.preview-window p {
+ font-size:.7rem;
+ color:#475569;
+}
+
+.preview-line {
+ width:55%;
+ height:6px;
+ background:#087c5b;
+ margin-top:15px;
+ border-radius:5px;
+}
+
+.project-content {
+ padding:22px;
+}
+
+.project-content p {
+ color:var(--muted);
+ font-size:.9rem;
+ margin:8px 0;
+}
+
+.project-content a {
+ color:var(--accent);
+ font-weight:700;
+}
+
+/* SOBRE MÍ */
+
+.about-grid {
+ display:grid;
+ grid-template-columns:1.1fr .9fr;
+ gap:55px;
+ align-items:center;
+}
+
+.about-text {
+ color:var(--muted);
+ margin-bottom:18px;
+}
+
+.values {
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:14px;
+}
+
+.value {
+ background:var(--surface);
+ padding:20px;
+ border:1px solid var(--border);
+ border-radius:13px;
+}
+
+.value h3 {
+ color:var(--accent);
+ font-size:1rem;
+}
+
+.value p {
+ color:var(--muted);
+ font-size:.82rem;
+ margin-top:6px;
+}
+
+/* PROCESO */
+
+.steps {
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:20px;
+}
+
+.step {
+ border-top:1px solid var(--border);
+ padding-top:18px;
+}
+
+.step-number {
+ font-size:2.4rem;
+ color:var(--accent);
+ font-weight:800;
+}
+
+.step p {
+ font-size:.87rem;
+ color:var(--muted);
+}
+
+/* BENEFICIOS */
+
+.benefits-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:20px;
+}
+
+.benefit {
+ padding:24px;
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:14px;
+}
+
+.benefit h3 {
+ margin-bottom:8px;
+}
+
+.benefit p {
+ color:var(--muted);
+ font-size:.88rem;
+}
+
+.benefit-icon {
+ font-size:1.7rem;
+ margin-bottom:12px;
+}
+
+/* FAQ */
+
+.faq-list {
+ max-width:800px;
+}
+
+.faq-item {
+ border-bottom:1px solid var(--border);
+}
+
+.faq-question {
+ width:100%;
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ background:none;
+ border:0;
+ color:var(--text);
+ text-align:left;
+ padding:22px 0;
+ cursor:pointer;
+ font-weight:700;
+}
+
+.faq-question span {
+ color:var(--accent);
+ font-size:1.3rem;
+}
+
+.faq-answer {
+ display:none;
+ color:var(--muted);
+ font-size:.9rem;
+ padding:0 30px 20px 0;
+}
+
+.faq-item.active .faq-answer {
+ display:block;
+}
 
 /* CONTACTO */
-.contact{background:linear-gradient(135deg,#122c2b,#101827 75%)}
-.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
-.contact-info{padding-top:15px}
-.contact-info p{color:var(--muted);margin-bottom:20px}
-.info-line{margin-top:25px}
-.info-line strong{color:var(--accent)}
-.form-card{background:#101827;border:1px solid var(--border);border-radius:18px;padding:32px}
-.form-card h3{font-family:Manrope,sans-serif;font-size:1.5rem;margin-bottom:8px}
-.form-intro{color:var(--muted);font-size:.88rem;margin-bottom:25px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:17px;min-width:0}
-.form-group.full{grid-column:1/-1}
-.form-group label{font-size:.88rem;font-weight:600;color:#e9eef7}
-.form-group input,.form-group select,.form-group textarea{
- width:100%;min-width:0;background:#0b1421;border:1px solid #29364a;
- color:white;padding:13px 14px;border-radius:8px;outline:none;transition:.2s
+
+.contact {
+ background:var(--contact-bg);
 }
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
- border-color:var(--accent);box-shadow:0 0 0 3px rgba(101,229,189,.08)
+
+.contact-grid {
+ display:grid;
+ grid-template-columns:.8fr 1.2fr;
+ gap:50px;
+ align-items:start;
 }
-.form-group input::placeholder,.form-group textarea::placeholder{color:#77869a}
-.form-group select option{background:#101827;color:white}
-.form-group textarea{resize:vertical;min-height:125px}
-.iti{width:100%;display:block}
-.iti input{width:100%;height:49px;padding-top:13px!important;padding-bottom:13px!important;padding-left:95px!important}
-.iti__country-list{background:#101827!important;color:white!important;border:1px solid #29364a!important;max-width:min(300px,85vw);z-index:20}
-.iti__country:hover,.iti__country.iti__highlight{background:#203044!important}
-.iti__dial-code{color:#65e5bd!important}
-.iti__selected-country{background:transparent!important}
-.iti__selected-country:hover{background:#203044!important}
-.iti__arrow{border-top-color:#65e5bd!important}
-.iti__arrow--up{border-bottom-color:#65e5bd!important;border-top-color:transparent!important}
-.iti__search-input{background:#0b1421!important;color:white!important;border:1px solid #29364a!important;padding:10px!important}
-.iti__dropdown-content{background:#101827!important}
-.phone-error{color:#ff8585;font-size:.78rem;display:none;margin-top:5px}
-.privacy{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.78rem;margin:8px 0 20px}
-.privacy input{margin-top:5px;accent-color:var(--accent)}
-.submit-btn{width:100%;font-size:1rem}
-.submit-btn:disabled{opacity:.65;cursor:wait}
-.form-footnote{text-align:center;color:var(--muted);font-size:.78rem;margin-top:16px}
-.contact-bottom{text-align:center;margin-top:35px;color:var(--muted);font-size:.85rem}
-footer{padding:32px 0;border-top:1px solid var(--border)}
-.footer-content{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
-footer p,.footer-links{color:var(--muted);font-size:.82rem}
-.footer-links{display:flex;gap:20px}
-.whatsapp-float{position:fixed;bottom:23px;right:23px;width:55px;height:55px;display:grid;place-items:center;background:#25d366;color:white;font-size:1.6rem;border-radius:50%;z-index:99;box-shadow:0 5px 25px rgba(37,211,102,.3)}
-@media(max-width:800px){
- .menu-toggle{display:block}
- .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:#101827;padding:25px 5%;flex-direction:column;align-items:flex-start}
- .nav-links.active{display:flex}
- .grid-2,.projects,.about-grid,.contact-grid{grid-template-columns:1fr}
- .steps{grid-template-columns:repeat(2,1fr)}
- .benefits-grid{grid-template-columns:repeat(2,1fr)}
- .contact-grid{gap:25px}
+
+.contact-info {
+ padding-top:15px;
 }
-@media(max-width:520px){
- .section{padding:70px 0}
- .hero{padding:80px 0}
- .hero h1{letter-spacing:-1.5px}
- .hero-buttons .btn{width:100%}
- .steps,.benefits-grid,.values,.form-grid{grid-template-columns:1fr}
- .form-group.full{grid-column:auto}
- .form-card{padding:22px}
- .footer-content{flex-direction:column;align-items:flex-start}
+
+.contact-info p {
+ color:var(--muted);
+ margin-bottom:20px;
+}
+
+.info-line {
+ margin-top:25px;
+}
+
+.info-line strong {
+ color:var(--accent);
+}
+
+.form-card {
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:32px;
+}
+
+.form-card h3 {
+ font-family:Manrope,sans-serif;
+ font-size:1.5rem;
+ margin-bottom:8px;
+}
+
+.form-intro {
+ color:var(--muted);
+ font-size:.88rem;
+ margin-bottom:25px;
+}
+
+.form-grid {
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:18px;
+}
+
+.form-group {
+ display:flex;
+ flex-direction:column;
+ gap:7px;
+ margin-bottom:17px;
+ min-width:0;
+}
+
+.form-group.full {
+ grid-column:1/-1;
+}
+
+.form-group label {
+ font-size:.88rem;
+ font-weight:600;
+ color:var(--text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+ width:100%;
+ min-width:0;
+ background:var(--input-bg);
+ border:1px solid var(--border);
+ color:var(--input-text);
+ padding:13px 14px;
+ border-radius:8px;
+ outline:none;
+ transition:.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+ border-color:var(--focus);
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 15%,transparent);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+ color:var(--muted);
+ opacity:1;
+}
+
+.form-group select option {
+ background:var(--surface);
+ color:var(--text);
+}
+
+.form-group textarea {
+ resize:vertical;
+ min-height:125px;
+}
+
+.iti {
+ width:100%;
+ display:block;
+}
+
+.iti input {
+ width:100%;
+ height:49px;
+ padding-top:13px!important;
+ padding-bottom:13px!important;
+ padding-left:95px!important;
+}
+
+.iti__country-list {
+ background:var(--surface)!important;
+ color:var(--text)!important;
+ border:1px solid var(--border)!important;
+ max-width:min(300px,85vw);
+ z-index:20;
+}
+
+.iti__country:hover,
+.iti__country.iti__highlight {
+ background:var(--surface2)!important;
+}
+
+.iti__dial-code {
+ color:var(--accent)!important;
+}
+
+.iti__selected-country {
+ background:transparent!important;
+}
+
+.iti__selected-country:hover {
+ background:var(--surface2)!important;
+}
+
+.iti__arrow {
+ border-top-color:var(--accent)!important;
+}
+
+.iti__arrow--up {
+ border-bottom-color:var(--accent)!important;
+ border-top-color:transparent!important;
+}
+
+.iti__search-input {
+ background:var(--input-bg)!important;
+ color:var(--text)!important;
+ border:1px solid var(--border)!important;
+ padding:10px!important;
+}
+
+.iti__dropdown-content {
+ background:var(--surface)!important;
+}
+
+.phone-error {
+ color:#e05252;
+ font-size:.78rem;
+ display:none;
+ margin-top:5px;
+}
+
+.privacy {
+ display:flex;
+ gap:10px;
+ align-items:flex-start;
+ color:var(--muted);
+ font-size:.78rem;
+ margin:8px 0 20px;
+}
+
+.privacy input {
+ margin-top:5px;
+ accent-color:var(--accent);
+ flex-shrink:0;
+}
+
+.submit-btn {
+ width:100%;
+ font-size:1rem;
+}
+
+.submit-btn:disabled {
+ opacity:.65;
+ cursor:wait;
+}
+
+.form-footnote {
+ text-align:center;
+ color:var(--muted);
+ font-size:.78rem;
+ margin-top:16px;
+}
+
+.contact-bottom {
+ text-align:center;
+ margin-top:35px;
+ color:var(--muted);
+ font-size:.85rem;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+ padding:32px 0;
+ border-top:1px solid var(--border);
+ background:var(--bg);
+}
+
+.footer-content {
+ display:flex;
+ justify-content:space-between;
+ gap:20px;
+ align-items:center;
+ flex-wrap:wrap;
+}
+
+footer p,.footer-links {
+ color:var(--muted);
+ font-size:.82rem;
+}
+
+.footer-links {
+ display:flex;
+ gap:20px;
+}
+
+/* WHATSAPP */
+
+.whatsapp-float {
+ position:fixed;
+ bottom:23px;
+ right:23px;
+ width:55px;
+ height:55px;
+ display:grid;
+ place-items:center;
+ background:#168b42;
+ color:white;
+ font-size:1.6rem;
+ border-radius:50%;
+ z-index:99;
+ box-shadow:0 5px 25px rgba(22,139,66,.3);
+}
+
+/* MÓVILES */
+
+@media(max-width:800px) {
+ .menu-toggle {
+  display:block;
+ }
+
+ nav {
+  justify-content:flex-start;
+ }
+
+ .logo {
+  margin-right:auto;
+ }
+
+ .nav-links {
+  display:none;
+  position:absolute;
+  top:76px;
+  left:0;
+  right:0;
+  background:var(--surface);
+  padding:25px 5%;
+  flex-direction:column;
+  align-items:flex-start;
+  border-bottom:1px solid var(--border);
+ }
+
+ .nav-links.active {
+  display:flex;
+ }
+
+ .grid-2,
+ .projects,
+ .about-grid,
+ .contact-grid {
+  grid-template-columns:1fr;
+ }
+
+ .steps {
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .benefits-grid {
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .contact-grid {
+  gap:25px;
+ }
+}
+
+@media(max-width:520px) {
+ .section {
+  padding:70px 0;
+ }
+
+ .hero {
+  padding:80px 0;
+ }
+
+ .hero h1 {
+  letter-spacing:-1.5px;
+ }
+
+ .hero-buttons .btn {
+  width:100%;
+ }
+
+ .steps,
+ .benefits-grid,
+ .values,
+ .form-grid {
+  grid-template-columns:1fr;
+ }
+
+ .form-group.full {
+  grid-column:auto;
+ }
+
+ .form-card {
+  padding:22px;
+ }
+
+ .footer-content {
+  flex-direction:column;
+  align-items:flex-start;
+ }
+}
+
+@media(prefers-reduced-motion:reduce) {
+ *,
+ *::before,
+ *::after {
+  scroll-behavior:auto!important;
+  transition:none!important;
+  animation:none!important;
+ }
 }
 </style>
 </head>
@@ -174,7 +938,17 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
  <div class="container">
   <nav>
    <a href="#inicio" class="logo">Daniel<span>.</span>Campos</a>
-   <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+   <button class="theme-toggle" id="themeToggle"
+    type="button" aria-label="Activar modo claro"
+    aria-pressed="false" title="Cambiar tema">
+    ☀️
+   </button>
+
+   <button class="menu-toggle" id="menuToggle"
+    type="button" aria-label="Abrir menú"
+    aria-expanded="false">☰</button>
+
    <ul class="nav-links" id="navLinks">
     <li><a href="#inicio">Inicio</a></li>
     <li><a href="#servicios">Servicios</a></li>
@@ -210,29 +984,51 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
    <h2 class="section-title">Soluciones para <span class="accent">tu negocio.</span></h2>
    <p class="section-description">Diseño web profesional con precios accesibles y atención personalizada.</p>
   </div>
+
   <div class="grid-2">
    <article class="card">
-    <div class="card-icon">✦</div><h3>Página de presentación</h3>
+    <div class="card-icon">✦</div>
+    <h3>Página de presentación</h3>
     <p>Una página para mostrar quién eres, qué ofreces y cómo contactarte.</p>
-    <ul><li>Diseño personalizado</li><li>Adaptable a celulares</li><li>Botón de WhatsApp</li><li>Información de contacto</li><li>Publicación en línea</li></ul>
+    <ul>
+     <li>Diseño personalizado</li><li>Adaptable a celulares</li>
+     <li>Botón de WhatsApp</li><li>Información de contacto</li>
+     <li>Publicación en línea</li>
+    </ul>
     <div class="price">Desde $150 <small>USD</small></div>
    </article>
+
    <article class="card">
-    <div class="card-icon">▣</div><h3>Sitio de varias páginas</h3>
+    <div class="card-icon">▣</div>
+    <h3>Sitio de varias páginas</h3>
     <p>Una presencia digital completa para tu empresa.</p>
-    <ul><li>Hasta 5 páginas</li><li>Inicio y servicios</li><li>Sección sobre nosotros</li><li>Formulario de contacto</li><li>Diseño personalizado</li></ul>
+    <ul>
+     <li>Hasta 5 páginas</li><li>Inicio y servicios</li>
+     <li>Sección sobre nosotros</li><li>Formulario de contacto</li>
+     <li>Diseño personalizado</li>
+    </ul>
     <div class="price">Desde $280 <small>USD</small></div>
    </article>
+
    <article class="card">
-    <div class="card-icon">▤</div><h3>Tienda en línea sencilla</h3>
+    <div class="card-icon">▤</div>
+    <h3>Tienda en línea sencilla</h3>
     <p>Presenta tus productos y recibe pedidos por internet.</p>
-    <ul><li>Catálogo de hasta 20 productos</li><li>Imágenes y descripciones</li><li>Pedidos por WhatsApp</li><li>Opción de pagos en línea</li></ul>
+    <ul>
+     <li>Catálogo de hasta 20 productos</li><li>Imágenes y descripciones</li>
+     <li>Pedidos por WhatsApp</li><li>Opción de pagos en línea</li>
+    </ul>
     <div class="price">Desde $380 <small>USD</small></div>
    </article>
+
    <article class="card">
-    <div class="card-icon">⚙</div><h3>Mantenimiento mensual</h3>
+    <div class="card-icon">⚙</div>
+    <h3>Mantenimiento mensual</h3>
     <p>Mantén tu página actualizada y funcionando.</p>
-    <ul><li>Cambios de textos</li><li>Actualización de fotografías</li><li>Cambios de precios</li><li>Revisión de funcionamiento</li></ul>
+    <ul>
+     <li>Cambios de textos</li><li>Actualización de fotografías</li>
+     <li>Cambios de precios</li><li>Revisión de funcionamiento</li>
+    </ul>
     <div class="price">$25 <small>USD / mes</small></div>
    </article>
   </div>
@@ -247,14 +1043,36 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
    <h2 class="section-title">Proyectos con <span class="accent">propósito.</span></h2>
    <p class="section-description">Cada proyecto es una oportunidad para crear una experiencia digital útil y atractiva.</p>
   </div>
+
   <div class="projects">
    <article class="card" style="padding:0;overflow:hidden">
-    <div class="project-preview"><div class="preview-window"><strong>Tu marca, tu espacio.</strong><p>Diseño web moderno y adaptable.</p><div class="preview-line"></div></div></div>
-    <div class="project-content"><h3>Proyecto personal</h3><p>Un espacio digital para presentar una marca y conectar con sus visitantes.</p><a href="#contacto">Próximamente ↗</a></div>
+    <div class="project-preview">
+     <div class="preview-window">
+      <strong>Tu marca, tu espacio.</strong>
+      <p>Diseño web moderno y adaptable.</p>
+      <div class="preview-line"></div>
+     </div>
+    </div>
+    <div class="project-content">
+     <h3>Proyecto personal</h3>
+     <p>Un espacio digital para presentar una marca y conectar con sus visitantes.</p>
+     <a href="#contacto">Próximamente ↗</a>
+    </div>
    </article>
+
    <article class="card" style="padding:0;overflow:hidden">
-    <div class="project-preview"><div class="preview-window"><strong>Catálogo digital</strong><p>Productos organizados por categorías.</p><div class="preview-line"></div></div></div>
-    <div class="project-content"><h3>Catálogo de productos</h3><p>Una experiencia de catálogo digital con información organizada.</p><a href="#contacto">Consultar proyecto ↗</a></div>
+    <div class="project-preview">
+     <div class="preview-window">
+      <strong>Catálogo digital</strong>
+      <p>Productos organizados por categorías.</p>
+      <div class="preview-line"></div>
+     </div>
+    </div>
+    <div class="project-content">
+     <h3>Catálogo de productos</h3>
+     <p>Una experiencia de catálogo digital con información organizada.</p>
+     <a href="#contacto">Consultar proyecto ↗</a>
+    </div>
    </article>
   </div>
  </div>
@@ -270,6 +1088,7 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
    <p class="about-text">Trabajo directamente contigo desde la primera conversación hasta la publicación de tu sitio web.</p>
    <a href="#contacto" class="btn btn-primary">Conversemos →</a>
   </div>
+
   <div class="values">
    <div class="value"><h3>✦ Calidad</h3><p>Cuido los detalles de cada proyecto.</p></div>
    <div class="value"><h3>◇ Confianza</h3><p>Precios y plazos claros.</p></div>
@@ -285,6 +1104,7 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
    <div class="section-label">Cómo trabajamos</div>
    <h2 class="section-title">De la idea a tu sitio <span class="accent">en línea.</span></h2>
   </div>
+
   <div class="steps">
    <div class="step"><div class="step-number">01</div><h3>Hablamos</h3><p>Me cuentas qué necesitas y qué quieres lograr.</p></div>
    <div class="step"><div class="step-number">02</div><h3>Propuesta</h3><p>Recibes un precio y plazo por escrito.</p></div>
@@ -300,6 +1120,7 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
    <div class="section-label">Beneficios</div>
    <h2 class="section-title">Tu negocio merece estar <span class="accent">en internet.</span></h2>
   </div>
+
   <div class="benefits-grid">
    <div class="benefit"><div class="benefit-icon">⌕</div><h3>Te encuentran</h3><p>Facilita que nuevos clientes conozcan tu negocio.</p></div>
    <div class="benefit"><div class="benefit-icon">◷</div><h3>Disponible siempre</h3><p>Tu información disponible a cualquier hora.</p></div>
@@ -317,12 +1138,28 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
    <div class="section-label">Preguntas frecuentes</div>
    <h2 class="section-title">Resolvamos tus <span class="accent">dudas.</span></h2>
   </div>
+
   <div class="faq-list">
-   <div class="faq-item"><button class="faq-question">¿Cuánto tarda mi página? <span>+</span></button><div class="faq-answer">Depende del tipo de proyecto. El plazo estimado se establece en la propuesta antes de comenzar.</div></div>
-   <div class="faq-item"><button class="faq-question">¿Quién proporciona los textos? <span>+</span></button><div class="faq-answer">Puedes proporcionarme la información y trabajaremos juntos para organizarla.</div></div>
-   <div class="faq-item"><button class="faq-question">¿Puedo editar mi página? <span>+</span></button><div class="faq-answer">Podemos conversar sobre una solución que permita administrar el contenido según tus necesidades.</div></div>
-   <div class="faq-item"><button class="faq-question">¿Qué son dominio y hosting? <span>+</span></button><div class="faq-answer">El dominio es la dirección de tu página y el hosting es el servicio donde se alojan sus archivos.</div></div>
-   <div class="faq-item"><button class="faq-question">¿Trabajas con otros países? <span>+</span></button><div class="faq-answer">Sí. Podemos trabajar de forma remota con clientes de diferentes países.</div></div>
+   <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">¿Cuánto tarda mi página? <span aria-hidden="true">+</span></button>
+    <div class="faq-answer">Depende del tipo de proyecto. El plazo estimado se establece en la propuesta antes de comenzar.</div>
+   </div>
+   <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">¿Quién proporciona los textos? <span aria-hidden="true">+</span></button>
+    <div class="faq-answer">Puedes proporcionarme la información y trabajaremos juntos para organizarla.</div>
+   </div>
+   <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">¿Puedo editar mi página? <span aria-hidden="true">+</span></button>
+    <div class="faq-answer">Podemos conversar sobre una solución que permita administrar el contenido según tus necesidades.</div>
+   </div>
+   <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">¿Qué son dominio y hosting? <span aria-hidden="true">+</span></button>
+    <div class="faq-answer">El dominio es la dirección de tu página y el hosting es el servicio donde se alojan sus archivos.</div>
+   </div>
+   <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">¿Trabajas con otros países? <span aria-hidden="true">+</span></button>
+    <div class="faq-answer">Sí. Podemos trabajar de forma remota con clientes de diferentes países.</div>
+   </div>
   </div>
  </div>
 </section>
@@ -337,6 +1174,7 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
     <div class="section-label">Hagamos algo juntos</div>
     <h2 class="section-title">Empecemos tu <span class="accent">proyecto.</span></h2>
     <p>Cuéntame sobre tu negocio y lo que necesitas. Te responderé en 1 a 3 días con una idea, un precio y un plazo por escrito.</p>
+
     <div class="info-line">
      <p><strong>✉ Correo</strong><br>rs.danielcampos@gmail.com</p>
      <p><strong>⌖ Ubicación</strong><br>El Salvador · Atención internacional</p>
@@ -379,8 +1217,8 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
       <div class="form-group full">
        <label for="phone">WhatsApp o teléfono *</label>
        <input id="phone" name="Teléfono" type="tel" placeholder="Ingresa tu número" required autocomplete="tel" maxlength="30">
-       <span id="phoneError" class="phone-error">Introduce un número telefónico válido para el país seleccionado.</span>
-       <span style="font-size:.75rem;color:#9ba9bd">El código internacional cambia automáticamente al seleccionar tu país.</span>
+       <span id="phoneError" class="phone-error" role="alert">Introduce un número telefónico válido para el país seleccionado.</span>
+       <span style="font-size:.75rem;color:var(--muted)">El código internacional cambia automáticamente al seleccionar tu país.</span>
       </div>
 
       <div class="form-group full">
@@ -408,7 +1246,7 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
      </div>
 
      <label class="privacy">
-      <input type="checkbox" required>
+      <input type="checkbox" name="Consentimiento de privacidad" value="Aceptado" required>
       <span>Acepto que mis datos sean utilizados únicamente para responder a mi solicitud y no sean compartidos con terceros con fines comerciales.</span>
      </label>
 
@@ -450,44 +1288,78 @@ footer p,.footer-links{color:var(--muted);font-size:.82rem}
 
 <script>
 // MENÚ MÓVIL
-const menuToggle=document.getElementById('menuToggle');
-const navLinks=document.getElementById('navLinks');
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 
-menuToggle.addEventListener('click',()=>{
- const opened=navLinks.classList.toggle('active');
- menuToggle.setAttribute('aria-expanded',opened);
- menuToggle.textContent=opened?'✕':'☰';
+menuToggle.addEventListener('click', () => {
+ const opened = navLinks.classList.toggle('active');
+ menuToggle.setAttribute('aria-expanded', opened);
+ menuToggle.setAttribute('aria-label', opened ? 'Cerrar menú' : 'Abrir menú');
+ menuToggle.textContent = opened ? '✕' : '☰';
 });
 
-document.querySelectorAll('.nav-links a').forEach(link=>{
- link.addEventListener('click',()=>{
+document.querySelectorAll('.nav-links a').forEach(link => {
+ link.addEventListener('click', () => {
   navLinks.classList.remove('active');
-  menuToggle.textContent='☰';
-  menuToggle.setAttribute('aria-expanded','false');
+  menuToggle.textContent = '☰';
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Abrir menú');
  });
 });
 
+// MODO CLARO / OSCURO
+const themeToggle = document.getElementById('themeToggle');
+const root = document.documentElement;
+
+function updateThemeButton() {
+ const light = root.classList.contains('light-mode');
+
+ themeToggle.textContent = light ? '🌙' : '☀️';
+ themeToggle.setAttribute('aria-pressed', String(light));
+ themeToggle.setAttribute(
+  'aria-label',
+  light ? 'Activar modo oscuro' : 'Activar modo claro'
+ );
+ themeToggle.title = light ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro';
+
+ document.querySelector('meta[name="theme-color"]').content =
+  light ? '#f4f7fb' : '#080d18';
+}
+
+updateThemeButton();
+
+themeToggle.addEventListener('click', () => {
+ const light = root.classList.toggle('light-mode');
+
+ try {
+  localStorage.setItem('jose-Campos-theme', light ? 'light' : 'dark');
+ } catch(e) {}
+
+ updateThemeButton();
+});
+
 // PREGUNTAS FRECUENTES
-document.querySelectorAll('.faq-question').forEach(button=>{
- button.addEventListener('click',()=>{
-  const item=button.parentElement;
-  item.classList.toggle('active');
-  button.querySelector('span').textContent=
-    item.classList.contains('active')?'−':'+';
+document.querySelectorAll('.faq-question').forEach(button => {
+ button.addEventListener('click', () => {
+  const item = button.parentElement;
+  const active = item.classList.toggle('active');
+
+  button.setAttribute('aria-expanded', String(active));
+  button.querySelector('span').textContent = active ? '−' : '+';
  });
 });
 
 // AÑO AUTOMÁTICO
-document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
 
 // SELECTOR INTERNACIONAL
-const phoneInput=document.getElementById('phone');
-const countrySelect=document.getElementById('countrySelect');
-const phoneError=document.getElementById('phoneError');
-const contactForm=document.getElementById('contactForm');
-const submitBtn=document.getElementById('submitBtn');
+const phoneInput = document.getElementById('phone');
+const countrySelect = document.getElementById('countrySelect');
+const phoneError = document.getElementById('phoneError');
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
 
-const iti=window.intlTelInput(phoneInput,{
+const iti = window.intlTelInput(phoneInput, {
  initialCountry:'sv',
  preferredCountries:['sv','us','mx','gt','hn','cr','es','co'],
  separateDialCode:true,
@@ -496,112 +1368,114 @@ const iti=window.intlTelInput(phoneInput,{
  countryNameLocale:'es',
  formatAsYouType:true,
  strictMode:true,
- loadUtils:()=>import(
+ loadUtils:() => import(
   'https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.5/build/js/utils.js'
  )
 });
 
-// CARGAR TODOS LOS PAÍSES
-const countries=window.intlTelInput.getCountryData();
+// CARGAR PAÍSES
+const countries = window.intlTelInput.getCountryData();
 
 countries
  .slice()
- .sort((a,b)=>a.name.localeCompare(b.name,'es'))
- .forEach(country=>{
-  const option=document.createElement('option');
-  option.value=country.iso2;
-  option.textContent=country.name;
+ .sort((a,b) => a.name.localeCompare(b.name,'es'))
+ .forEach(country => {
+  const option = document.createElement('option');
+  option.value = country.iso2;
+  option.textContent = country.name;
   countrySelect.appendChild(option);
- });
+});
 
-// SINCRONIZAR SELECTOR Y TELÉFONO
-function syncCountry(){
- const selected=iti.getSelectedCountryData();
- if(selected.iso2){
-  countrySelect.value=selected.iso2;
+// SINCRONIZAR PAÍS
+function syncCountry() {
+ const selected = iti.getSelectedCountryData();
+
+ if(selected.iso2) {
+  countrySelect.value = selected.iso2;
  }
 }
 
-phoneInput.addEventListener('countrychange',()=>{
+phoneInput.addEventListener('countrychange', () => {
  syncCountry();
- phoneError.style.display='none';
+ phoneError.style.display = 'none';
 });
 
-countrySelect.addEventListener('change',()=>{
+countrySelect.addEventListener('change', () => {
  iti.setCountry(countrySelect.value);
  syncCountry();
- phoneError.style.display='none';
+ phoneError.style.display = 'none';
 });
 
 syncCountry();
 
-// EVITAR ENVIAR NÚMEROS INVÁLIDOS
-contactForm.addEventListener('submit',async function(event){
-
+// VALIDAR Y ENVIAR
+contactForm.addEventListener('submit', async function(event) {
  event.preventDefault();
 
- phoneError.style.display='none';
+ phoneError.style.display = 'none';
 
- submitBtn.disabled=true;
- submitBtn.textContent='Validando...';
+ if(!contactForm.reportValidity()) return;
 
- try{
+ submitBtn.disabled = true;
+ submitBtn.textContent = 'Validando...';
+
+ try {
   await iti.promise;
 
-  if(!iti.getSelectedCountryData().iso2){
-   phoneError.textContent='Selecciona un país.';
-   phoneError.style.display='block';
+  if(!iti.getSelectedCountryData().iso2) {
+   phoneError.textContent = 'Selecciona un país.';
+   phoneError.style.display = 'block';
    countrySelect.focus();
    return;
   }
 
-  if(!iti.isValidNumber()){
-   phoneError.textContent='Introduce un número telefónico válido para el país seleccionado.';
-   phoneError.style.display='block';
+  if(!iti.isValidNumber()) {
+   phoneError.textContent = 'Introduce un número telefónico válido para el país seleccionado.';
+   phoneError.style.display = 'block';
    phoneInput.focus();
    return;
   }
 
-  // GUARDAR NÚMERO COMPLETO INTERNACIONAL
-  let fullNumber=iti.getNumber();
+  const fullNumber = iti.getNumber();
+  const country = iti.getSelectedCountryData();
 
-  let hiddenPhone=contactForm.querySelector(
+  let hiddenPhone = contactForm.querySelector(
    'input[name="Teléfono internacional"]'
   );
 
-  if(!hiddenPhone){
-   hiddenPhone=document.createElement('input');
-   hiddenPhone.type='hidden';
-   hiddenPhone.name='Teléfono internacional';
+  if(!hiddenPhone) {
+   hiddenPhone = document.createElement('input');
+   hiddenPhone.type = 'hidden';
+   hiddenPhone.name = 'Teléfono internacional';
    contactForm.appendChild(hiddenPhone);
   }
 
-  hiddenPhone.value=fullNumber;
+  hiddenPhone.value = fullNumber;
 
-  // GUARDAR CÓDIGO DEL PAÍS
-  let hiddenCountry=contactForm.querySelector(
+  let hiddenCountry = contactForm.querySelector(
    'input[name="Código ISO del país"]'
   );
 
-  if(!hiddenCountry){
-   hiddenCountry=document.createElement('input');
-   hiddenCountry.type='hidden';
-   hiddenCountry.name='Código ISO del país';
+  if(!hiddenCountry) {
+   hiddenCountry = document.createElement('input');
+   hiddenCountry.type = 'hidden';
+   hiddenCountry.name = 'Código ISO del país';
    contactForm.appendChild(hiddenCountry);
   }
 
-  hiddenCountry.value=iti.getSelectedCountryData().iso2.toUpperCase();
+  hiddenCountry.value = country.iso2.toUpperCase();
 
-  // ENVIAR A FORMSUBMIT
-  submitBtn.textContent='Enviando solicitud...';
+  submitBtn.textContent = 'Enviando solicitud...';
+
+  // Envío nativo al servicio de formularios
   contactForm.submit();
 
- }catch(error){
-  phoneError.textContent='No se pudo validar el teléfono. Comprueba tu conexión e inténtalo de nuevo.';
-  phoneError.style.display='block';
- }finally{
-  submitBtn.disabled=false;
-  submitBtn.textContent='Enviar solicitud →';
+ } catch(error) {
+  phoneError.textContent = 'No se pudo validar el teléfono. Comprueba tu conexión e inténtalo de nuevo.';
+  phoneError.style.display = 'block';
+ } finally {
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Enviar solicitud →';
  }
 });
 </script>
