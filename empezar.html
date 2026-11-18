@@ -3,14 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2447F5">
 <title>Empezar mi proyecto | Daniel Campos</title>
-<meta name="description" content="Cuéntame sobre tu negocio y tu proyecto web. Te respondo con una idea, un precio y un plazo por escrito.">
+<meta name="description" content="Cuéntame sobre tu negocio y tu proyecto web. Te respondo en 1 a 3 días con una idea, un precio y un plazo por escrito.">
+<link rel="canonical" href="https://danieeelc.pages.dev/empezar">
+
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_LA">
+<meta property="og:site_name" content="Daniel Campos">
 <meta property="og:title" content="Empezar mi proyecto | Daniel Campos">
-<meta property="og:description" content="Cuéntame sobre tu negocio y tu proyecto web. Te respondo con una idea, un precio y un plazo por escrito.">
+<meta property="og:description" content="Cuéntame sobre tu negocio y tu proyecto web. Te respondo en 1 a 3 días con una idea, un precio y un plazo por escrito.">
 <meta property="og:url" content="https://danieeelc.pages.dev/empezar">
 <meta property="og:image" content="https://danieeelc.pages.dev/x.png">
-<link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='8%208%20362%20362'%3E%3Cpath%20d='M99.5209%208%20189%208C288.964%208%20370%2089.0365%20370%20189%20370%20288.964%20288.964%20370%20189%20370L99.5209%20370C48.9753%20370%208%20329.025%208%20278.479L8%20265.623%20160.182%20265.623%20160.182%20291.164%20307.044%20189%20160.182%2086.8356%20160.182%20112.377%208%20112.377%208%2099.5209C8%2048.9753%2048.9753%208%2099.5209%208Z'%20fill='%232447F5'%20fill-rule='evenodd'/%3E%3C/svg%3E">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Empezar mi proyecto | Daniel Campos">
+<meta name="twitter:description" content="Cuéntame sobre tu negocio y tu proyecto web. Te respondo en 1 a 3 días con una idea, un precio y un plazo por escrito.">
+<meta name="twitter:image" content="https://danieeelc.pages.dev/x.png">
+<link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg%20xmlns='http%3A//www.w3.org/2000/svg'%20viewBox='8%208%20362%20362'%3E%3Cpath%20d='M99.5209%208%20189%208C288.964%208%20370%2089.0365%20370%20189%20370%20288.964%20288.964%20370%20189%20370L99.5209%20370C48.9753%20370%208%20329.025%208%20278.479L8%20265.623%20160.182%20265.623%20160.182%20291.164%20307.044%20189%20160.182%2086.8356%20160.182%20112.377%208%20112.377%208%2099.5209C8%2048.9753%2048.9753%208%2099.5209%208Z'%20fill='%232447F5'%20fill-rule='evenodd'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
 <script>
 (function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}
@@ -27,13 +36,15 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grote
 .wrap{max-width:64rem;margin:0 auto;padding-inline:clamp(1.25rem,5vw,3rem)}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--lemon);outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:1rem;top:1rem;z-index:50;background:var(--lemon);color:var(--lemon-ink);padding:.6rem 1rem;border-radius:8px;font-weight:600;text-decoration:none}
 .hero{background:var(--hero);color:var(--hero-ink);padding-bottom:clamp(2.5rem,7vw,4.5rem)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding-block:1.25rem;gap:1rem}
 .brand{display:inline-flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.1rem;text-decoration:none}
 .logo{width:1.75rem;height:1.75rem;flex:none;display:block}
 .tools{display:flex;align-items:center;gap:.5rem}
 .nav a.link{font-weight:600;text-underline-offset:4px;margin-right:.75rem}
-.tbtn{font:inherit;font-weight:600;font-size:.85rem;min-width:2.5rem;height:2.5rem;padding:0 .75rem;border-radius:999px;border:2px solid rgba(255,255,255,.7);background:transparent;color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.tbtn{font:inherit;font-weight:600;font-size:.85rem;min-width:2.5rem;height:2.5rem;padding:0 .75rem;border-radius:999px;border:2px solid rgba(255,255,255,.7);background:transparent;color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
 .tbtn:hover{background:rgba(255,255,255,.15)}
 .tbtn svg{display:block}
 .ico-sun{display:none}
@@ -43,6 +54,7 @@ h1{font-weight:800;font-size:clamp(2.2rem,7.5vw,4.25rem);line-height:1.05;letter
 .lead{font-size:clamp(1.1rem,2.6vw,1.3rem);max-width:36rem;margin:0;color:rgba(255,255,255,.9)}
 main{padding-block:clamp(2rem,6vw,4rem)}
 form{max-width:40rem;display:grid;gap:1.25rem}
+form[hidden],#done[hidden]{display:none}
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.25rem}
 label{display:block;font-weight:600;margin-bottom:.35rem}
 .hint{display:block;font-weight:400;color:var(--muted);font-size:.92rem}
@@ -62,26 +74,29 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px soli
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .send{font:inherit;font-weight:600;cursor:pointer;justify-self:start;background:var(--hero);color:#fff;border:2px solid transparent;border-radius:10px;padding:.9rem 1.6rem}
 .send:disabled{opacity:.6;cursor:wait}
+a.send{display:inline-block;text-decoration:none}
 .note{margin:0;color:var(--muted);font-size:.95rem}
-#status{margin:0;font-weight:600;min-height:1.6em}
-#status.ok{color:#0B7A43}#status.err{color:#B42318}
-:root[data-theme="dark"] #status.ok{color:#5FD38D}:root[data-theme="dark"] #status.err{color:#FF8A80}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #status.ok{color:#5FD38D}:root:not([data-theme="light"]) #status.err{color:#FF8A80}}
-.gform{max-width:40rem}
-.gform iframe{display:block;width:100%;height:1598px;border:0;border-radius:12px;background:#fff}
-.gform .note{margin-top:1rem}
+#status{margin:0;font-weight:600;min-height:1.6em;color:#B42318}
+:root[data-theme="dark"] #status{color:#FF8A80}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #status{color:#FF8A80}}
+#done{max-width:40rem}
+#done:focus{outline:none}
+#done h2{font-weight:800;font-size:clamp(1.8rem,5vw,2.5rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 .75rem}
+#done p{margin:0 0 1.5rem}
 footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 2rem;font-size:.95rem}
-.foot{display:flex;align-items:center;gap:.6rem}.foot .logo{width:1.25rem;height:1.25rem}
+.foot{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}.foot .logo{width:1.25rem;height:1.25rem}
+.foot a{margin-left:auto;text-underline-offset:4px}
 </style>
 </head>
 <body>
+<a class="skip" data-i18n="skip" href="#main">Saltar al contenido</a>
 <header class="hero">
   <div class="wrap">
     <nav class="nav">
-      <a class="brand" href="./"><svg class="logo" viewBox="8 8 362 362" aria-hidden="true"><path d="M99.5209 8 189 8C288.964 8 370 89.0365 370 189 370 288.964 288.964 370 189 370L99.5209 370C48.9753 370 8 329.025 8 278.479L8 265.623 160.182 265.623 160.182 291.164 307.044 189 160.182 86.8356 160.182 112.377 8 112.377 8 99.5209C8 48.9753 48.9753 8 99.5209 8Z" fill="currentColor" fill-rule="evenodd"/></svg>Daniel Campos</a>
+      <a class="brand" href="/"><svg class="logo" viewBox="8 8 362 362" aria-hidden="true"><path d="M99.5209 8 189 8C288.964 8 370 89.0365 370 189 370 288.964 288.964 370 189 370L99.5209 370C48.9753 370 8 329.025 8 278.479L8 265.623 160.182 265.623 160.182 291.164 307.044 189 160.182 86.8356 160.182 112.377 8 112.377 8 99.5209C8 48.9753 48.9753 8 99.5209 8Z" fill="currentColor" fill-rule="evenodd"/></svg>Daniel Campos</a>
       <div class="tools">
-        <a class="link" data-i18n="back" href="./">← Inicio</a>
-        <button id="lang" class="tbtn" type="button">EN</button>
+        <a class="link" data-i18n="back" href="/">← Inicio</a>
+        <button id="lang" class="tbtn" type="button" lang="en" aria-label="Switch to English">EN</button>
         <button id="theme" class="tbtn" type="button" aria-label="Cambiar a modo oscuro">
           <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
           <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -89,11 +104,11 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
       </div>
     </nav>
     <h1 data-i18n="h1">Empecemos tu proyecto.</h1>
-    <p class="lead" data-i18n="lead">Cuéntame sobre tu negocio y lo que necesitas. Te respondo con una idea, un precio y un plazo por escrito.</p>
+    <p class="lead" data-i18n="lead">Cuéntame sobre tu negocio y lo que necesitas. Te respondo en 1 a 3 días con una idea, un precio y un plazo por escrito.</p>
   </div>
 </header>
 
-<main>
+<main id="main">
   <div class="wrap">
     <form id="f" method="POST">
       <div class="hp" aria-hidden="true"><label>No llenar<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -127,60 +142,33 @@ footer{background:var(--hero);color:rgba(255,255,255,.85);padding-block:1.25rem 
       </div>
       <button class="send" id="send" type="submit" data-i18n="send">Enviar solicitud</button>
       <p id="status" role="status" aria-live="polite"></p>
-      <p class="note" data-i18n="note">Te responderé por correo o por WhatsApp.</p>
+      <p class="note" data-i18n="note">Te responderé por correo o por WhatsApp en un plazo de 1 a 3 días.</p>
+      <p class="note" data-i18n="priv">Uso tus datos solo para responder a tu solicitud y no los comparto con terceros.</p>
     </form>
+    <section id="done" tabindex="-1" hidden>
+      <h2 data-i18n="dT">¡Solicitud recibida!</h2>
+      <p data-i18n="dP">Gracias por contarme sobre tu proyecto. Te responderé por correo o WhatsApp en 1 a 3 días con una idea, un precio y un plazo por escrito.</p>
+      <a class="send" data-i18n="dL" href="/">Volver al inicio</a>
+    </section>
   </div>
 </main>
-<footer><div class="wrap foot"><svg class="logo" viewBox="8 8 362 362" aria-hidden="true"><path d="M99.5209 8 189 8C288.964 8 370 89.0365 370 189 370 288.964 288.964 370 189 370L99.5209 370C48.9753 370 8 329.025 8 278.479L8 265.623 160.182 265.623 160.182 291.164 307.044 189 160.182 86.8356 160.182 112.377 8 112.377 8 99.5209C8 48.9753 48.9753 8 99.5209 8Z" fill="currentColor" fill-rule="evenodd"/></svg><span>© 2026 Daniel Campos</span></div></footer>
+<footer><div class="wrap foot"><svg class="logo" viewBox="8 8 362 362" aria-hidden="true"><path d="M99.5209 8 189 8C288.964 8 370 89.0365 370 189 370 288.964 288.964 370 189 370L99.5209 370C48.9753 370 8 329.025 8 278.479L8 265.623 160.182 265.623 160.182 291.164 307.044 189 160.182 86.8356 160.182 112.377 8 112.377 8 99.5209C8 48.9753 48.9753 8 99.5209 8Z" fill="currentColor" fill-rule="evenodd"/></svg><span>© 2026 Daniel Campos</span><a href="mailto:rs.danielcampos@gmail.com">rs.danielcampos@gmail.com</a></div></footer>
 
 <script>
 (function(){
-var root=document.documentElement;
-var EN={
-title:"Start my project | Daniel Campos",
-desc:"Tell me about your business and your web project. I’ll reply with an idea, a price and a timeline in writing.",
-back:"← Home",
-h1:"Let’s start your project.",
-lead:"Tell me about your business and what you need. I’ll reply with an idea, a price and a timeline in writing.",
-lName:"Name", lEmail:"Email", lTel:"WhatsApp or phone", lCountry:"Country", lBiz:"Business name",
-pPais:"Type or select your country",
-noRes:"No results",
-lSvc:"What do you need?",
-o1:"Single-page site", o2:"Multi-page website", o3:"Simple online store", o4:"Monthly maintenance", o5:"Not sure yet",
-lMsg:"Tell me about your project", hMsg:"What does your business do and what do you want your site to achieve?",
-send:"Send request", sending:"Sending…", note:"I’ll reply by email or WhatsApp.",
-ok:"Thank you! I received your request and will reply soon.",
-err:"The request couldn’t be sent. Please try again or message me on WhatsApp: +503 7050 2502."
+var root=document.documentElement, lang='es';
+var EN={"skip": "Skip to content", "back": "← Home", "h1": "Let’s start your project.", "lead": "Tell me about your business and what you need. I’ll reply within 1 to 3 days with an idea, a price and a timeline in writing.", "lName": "Name", "lEmail": "Email", "lTel": "WhatsApp or phone", "lCountry": "Country", "lBiz": "Business name", "lSvc": "What do you need?", "o1": "Single-page site", "o2": "Multi-page website", "o3": "Simple online store", "o4": "Monthly maintenance", "o5": "Not sure yet", "lMsg": "Tell me about your project", "hMsg": "What does your business do and what do you want your site to achieve?", "send": "Send request", "note": "I’ll reply by email or WhatsApp within 1 to 3 days.", "priv": "I only use your details to reply to your request and don’t share them with third parties.", "dT": "Request received!", "dP": "Thank you for telling me about your project. I’ll reply by email or WhatsApp within 1 to 3 days with an idea, a price and a timeline in writing.", "dL": "Back to home", "title": "Start my project | Daniel Campos", "desc": "Tell me about your business and your web project. I’ll reply within 1 to 3 days with an idea, a price and a timeline in writing."};
+var M={
+es:{sending:"Enviando…",send:"Enviar solicitud",pPais:"Escribe o elige tu país",noRes:"Sin resultados",err:"No se pudo enviar. Inténtalo de nuevo, escríbeme por WhatsApp al +503 7050 2502 o por correo a rs.danielcampos@gmail.com."},
+en:{sending:"Sending…",send:"Send request",pPais:"Type or select your country",noRes:"No results",err:"The request couldn’t be sent. Please try again, message me on WhatsApp at +503 7050 2502 or email rs.danielcampos@gmail.com."}
 };
-var es={}, nodes=document.querySelectorAll('[data-i18n]');
-var md=document.querySelector('meta[name="description"]');
-nodes.forEach(function(n){es[n.getAttribute('data-i18n')]=n.textContent});
-es.title=document.title; es.desc=md.getAttribute('content');
-es.sending="Enviando…";
-es.pPais="Escribe o elige tu país";
-es.noRes="Sin resultados";
-es.ok="¡Gracias! Recibí tu solicitud y te responderé pronto.";
-es.err="No se pudo enviar. Inténtalo de nuevo o escríbeme por WhatsApp: +503 7050 2502.";
-var langBtn=document.getElementById('lang'), themeBtn=document.getElementById('theme'), lang='es';
-var st=document.getElementById('status'), btn=document.getElementById('send'), form=document.getElementById('f'), stKey=null;
-function T(k){return (lang==='en'?EN:es)[k]}
-function showStatus(k,cls){stKey=k;st.className=cls||'';st.textContent=k?T(k):''}
+function T(k){return M[lang][k]}
+var themeBtn=document.getElementById('theme'), langBtn=document.getElementById('lang');
+var st=document.getElementById('status'), btn=document.getElementById('send'), form=document.getElementById('f'), done=document.getElementById('done');
 function labels(){
   var dark=root.getAttribute('data-theme')==='dark';
   themeBtn.setAttribute('aria-label', lang==='en' ? (dark?'Switch to light mode':'Switch to dark mode') : (dark?'Cambiar a modo claro':'Cambiar a modo oscuro'));
 }
-function setLang(l,save){
-  lang=l;
-  nodes.forEach(function(n){n.textContent=T(n.getAttribute('data-i18n'))});
-  buildCountries();
-  root.setAttribute('lang',l); document.title=T('title'); md.setAttribute('content',T('desc'));
-  langBtn.textContent=(l==='en')?'ES':'EN';
-  langBtn.setAttribute('aria-label',(l==='en')?'Cambiar a español':'Switch to English');
-  if(stKey)st.textContent=T(stKey);
-  labels();
-  if(save){try{localStorage.setItem('lang',l)}catch(e){}}
-}
-langBtn.addEventListener('click',function(){setLang(lang==='en'?'es':'en',true)});
 themeBtn.addEventListener('click',function(){
   var n=root.getAttribute('data-theme')==='dark'?'light':'dark';
   root.setAttribute('data-theme',n);
@@ -272,14 +260,31 @@ tel.addEventListener('input',function(){
 });
 form.addEventListener('submit',function(e){
   e.preventDefault();
-  btn.disabled=true; btn.textContent=T('sending'); showStatus(null);
+  btn.disabled=true; btn.textContent=T('sending'); st.textContent='';
   var o={}; new FormData(form).forEach(function(v,k){o[k]=v}); o.idioma=lang;
   fetch('/api/contacto',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)})
   .then(function(r){return r.json().catch(function(){return {}}).then(function(d){return r.ok&&d.ok})})
-  .then(function(ok){if(ok){form.reset();clearCountry();showStatus('ok','ok')}else{showStatus('err','err')}})
-  .catch(function(){showStatus('err','err')})
+  .then(function(ok){
+    if(ok){form.reset();clearCountry();form.hidden=true;done.hidden=false;done.focus()}
+    else{st.textContent=T('err')}
+  })
+  .catch(function(){st.textContent=T('err')})
   .then(function(){btn.disabled=false;btn.textContent=T('send')});
 });
+var es={}, nodes=document.querySelectorAll('[data-i18n]'), md=document.querySelector('meta[name="description"]');
+nodes.forEach(function(n){es[n.getAttribute('data-i18n')]=n.textContent});
+es.title=document.title; es.desc=md.getAttribute('content');
+function setLang(l,save){
+  lang=l; var d=(l==='en')?EN:es;
+  nodes.forEach(function(n){n.textContent=d[n.getAttribute('data-i18n')]});
+  buildCountries();
+  root.setAttribute('lang',l); document.title=d.title; md.setAttribute('content',d.desc);
+  langBtn.textContent=(l==='en')?'ES':'EN';
+  langBtn.setAttribute('aria-label',(l==='en')?'Cambiar a español':'Switch to English');
+  labels();
+  if(save){try{localStorage.setItem('lang',l)}catch(e){}}
+}
+langBtn.addEventListener('click',function(){setLang(lang==='en'?'es':'en',true)});
 var saved=null; try{saved=localStorage.getItem('lang')}catch(e){}
 setLang(saved==='en'?'en':'es',false);
 })();
